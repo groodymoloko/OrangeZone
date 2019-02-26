@@ -1,0 +1,28 @@
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.character-image {
+    margin: 4px;
+    font-family: 'Orbitron', sans-serif;
+    background-color: mediumpurple;
+    border: 4px outset purple;
+}
+
+.character-image:hover {
+    cursor: pointer;
+    opacity: 0.80;;
+}
+
+.imageBox {
+    margin-bottom: 5px;
+}
+
+.imageBox:hover {
+    cursor: pointer;
+    outline: 3px outset mediumpurple;
+    outline-offset: 2px;
+}
