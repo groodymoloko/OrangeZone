@@ -1,0 +1,1 @@
+INSERT INTO characters (character_name, image_link, character_description, speed, intelligence, luck) VALUES ('')

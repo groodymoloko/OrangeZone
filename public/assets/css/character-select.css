@@ -6,7 +6,7 @@
 }
 
 .character-image {
-    margin: 4px;
+    /* margin: 4px; */
     font-family: 'Orbitron', sans-serif;
     background-color: mediumpurple;
     border: 4px outset purple;

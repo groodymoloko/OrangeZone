@@ -8,6 +8,7 @@ CREATE TABLE characters
     id int NOT NULL AUTO_INCREMENT,
     character_name varchar(255) NOT NULL,
     image_link varchar(255) NOT NULL,
+    character_description text NOT NULL,
     speed integer(10) NOT NULL,
     intelligence integer(10) NOT NULL,
     luck integer(10) NOT NULL,
