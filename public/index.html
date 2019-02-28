@@ -4,17 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Landing Page</title>
 </head>
 <body>
-    <h1>hello</h1>
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1 class="text-center">Landing Page</h1>
+            <hr>
+            <h2 class="text-center">Serves as the homepage has button that takes you to login screen</h2>
+            <br>
+        
+            <div class="text-center">
+                <a href="/login"><button class="btn btn-lg btn-primary">Get Started!</button></a>
+            </div>
+        </div>
+    
+        <footer class="footer">
+            <div class="container">
+            </div>
+        </footer>
+    
+    </div>
+    
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-    <script  type="text/javascript" src="./assets/js/game.js">
-        // let socket = io.connect("/");
-        // console.log("game.js ran");
-        // socket.on("welcome", function(data) {
-        //     console.log(data);
-        // });
-    </script>
+    <script  type="text/javascript" src="./assets/js/game.js"></script>
 </body>
 </html>
