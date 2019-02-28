@@ -1,7 +1,7 @@
 
 const express = require('express');
 const app = express();
-// const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 
@@ -11,12 +11,15 @@ const io = require("socket.io")(server);
 // app.use(express.json());
 
 app.get("/", function(req, res) {
+    // res.sendFile(__dirname + "/public/index.html");
     res.sendFile(__dirname + "/public/index.html");
 });
 
 // Static directory
-app.use("/public", express.static(__dirname + "/public"));
-app.use("/js", express.static(__dirname + "/public/js"));
+// app.use(express.static('node_modules'));
+// app.use("/public", express.static(__dirname + "/public"));
+app.use(express.static("public"));
+// app.use("/js", express.static(__dirname + "/public/js"));
 
 
 
@@ -30,8 +33,8 @@ io.on("connection", (socket) => {
     });
 });
 
-server.listen(8080, () => {
-    console.log("Server is listening on localhost: " + 8080);
+server.listen(PORT, () => {
+    console.log("Server is listening on localhost: " + PORT);
 });
 
 
