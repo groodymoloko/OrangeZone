@@ -7,19 +7,19 @@ const io = require("socket.io")(server);
 
 
 // Sets up the Express app to handle data parsing
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
-
-app.get("/", function(req, res) {
-    // res.sendFile(__dirname + "/public/index.html");
-    res.sendFile(__dirname + "/public/index.html");
-});
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Static directory
 // app.use(express.static('node_modules'));
 // app.use("/public", express.static(__dirname + "/public"));
-app.use(express.static("public"));
 // app.use("/js", express.static(__dirname + "/public/js"));
+app.use(express.static("public"));
+
+// app.get("/", function(req, res) {
+//     res.sendFile(__dirname + "/public/index.html");
+// });
+require("./routes/html-routes")(app);
 
 
 
