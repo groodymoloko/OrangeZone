@@ -4,8 +4,8 @@
             <div class="col-12">
                 <!-- Characters will Display Here -->   
                 <div class="flex-container mb-5" id="character-view">
-                    <div class="card text-center" style="width: 13rem;">
                         {{#each characters}}
+                    <div class="card text-center" style="width: 13rem;">
                             <a href="#" target="_blank"><img src="{{this.image_link}}" class="card-img-top character-image" alt="{{this.character_name}}"></a>
                             <div class="card-body">
                             <h5 class="card-title" id="charname">{{this.character_name}}</h5>
@@ -16,8 +16,8 @@
                             <li class="list-group-item">Intelligence: <span id="charInt">{{this.intelligence}}</span></li>
                             <li class="list-group-item">Luck: <span id="charLuck">{{this.luck}}</span></li>
                             </ul>
-                        {{/each}}
                     </div>
+                        {{/each}}
                 </div>
             </div>
     </div>
