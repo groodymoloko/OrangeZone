@@ -12,5 +12,7 @@ CREATE TABLE characters
     speed integer(10) NOT NULL,
     intelligence integer(10) NOT NULL,
     luck integer(10) NOT NULL,
+    createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 );
