@@ -1,0 +1,34 @@
+<div class="container press my-4">
+    <h1>Choose Your Character!</h1>
+    <div class="row mt-5">
+            <div class="col-12">
+                <!-- Characters will Display Here -->   
+                <div class="flex-container mb-5" id="character-view">
+                    <div class="card text-center" style="width: 13rem;">
+                        {{#each characters}}
+                            <a href="#" target="_blank"><img src="{{this.image_link}}" class="card-img-top character-image" alt="{{this.character_name}}"></a>
+                            <div class="card-body">
+                            <h5 class="card-title" id="charname">{{this.character_name}}</h5>
+                            <p class="card-text" id="chardescription">{{this.character_description}}</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Speed: <span id="charSpeed">{{this.speed}}</span></li>
+                            <li class="list-group-item">Intelligence: <span id="charInt">{{this.intelligence}}</span></li>
+                            <li class="list-group-item">Luck: <span id="charLuck">{{this.luck}}</span></li>
+                            </ul>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+</div>

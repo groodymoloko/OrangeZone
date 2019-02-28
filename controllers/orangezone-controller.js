@@ -9,9 +9,11 @@ module.exports = function(app) {
             let charObj = {
                 characters: result
             };
-            res.render('index', charObj)
+            res.render('characters', charObj)
         });
     });
+
+    
 
 
 
