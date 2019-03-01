@@ -1,7 +1,7 @@
 const db = require("../models");
 
 module.exports = function(app){
-    app.post('/auth', function(request, response) {
+    app.post('/login/auth', function(request, response) {
         let username = request.body.username;
         let password = request.body.password;
         if (username && password) {
@@ -12,11 +12,36 @@ module.exports = function(app){
                 },
               }).then(function(dbAccount) {
                 // response.json(dbAccount);
-                if (results.length > 0) {
+                console.log(`===== ${dbAccount} ========`)
+                if (dbAccount !== null) {
                     request.session.loggedin = true;
                     request.session.username = username;
-                    response.redirect('/home');
-                } else {
+                    response.redirect('/');
+                } 
+                else if (dbAccount == null){
+                    response.send('Incorrect Username and/or Password!');
+                }			
+                response.end();
+              });
+        } 
+        else {
+            response.send('Please enter Username and Password!');
+            response.end();
+        }
+    });
+    app.post('/register', function(request, response) {
+        let username = request.body.username;
+        let password = request.body.password;
+        if (username && password) {
+            db.Account.create(request.body).then(function(dbAccount) {
+                // response.json(dbAccount);
+                console.log(`===== ${dbAccount} ========`)
+                if (dbAccount !== null) {
+                    request.session.loggedin = true;
+                    request.session.username = username;
+                    response.redirect('/login');
+                } 
+                else if (dbAccount == null){
                     response.send('Incorrect Username and/or Password!');
                 }			
                 response.end();
