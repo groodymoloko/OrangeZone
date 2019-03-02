@@ -54,8 +54,4 @@ INSERT INTO questions (category, difficulty, question, answer, wrongOne, wrongTw
 ('Sports', 8 ,'What team won 3 Super Bowls in the 1990s?', 'Cowboys', 'Titans', 'Cardinals', 'Steelers'),
 ('Sports', 9 ,'In the NBA, the Celtics won the NBA Championship for the 2007-08 season. Who did they defeat?', 'LA Lakers', 'Dallas Mavericks', 'Golden State Warriors', 'Houston Rockets'),
 ('Sports', 7 ,'Who was the youngest player in the NBA to reach 10,000 regular season points in the 20th century?', 'Kobe Bryant', 'Stephen Curry', 'Lebron James', 'James Harden')
-<<<<<<< HEAD
 ; 
-=======
-; 
->>>>>>> 34710f4ff1b114c3dd3d14114d2e6ceb0514a40a

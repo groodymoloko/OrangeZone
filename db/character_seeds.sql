@@ -3,7 +3,3 @@ INSERT INTO characters (character_name, image_link, character_description, speed
 INSERT INTO characters (character_name, image_link, character_description, speed, intelligence, luck) VALUES ("Terrance", "./assets/images/pexels-mb.jpeg", "Has worked as both a paramedic and a dolphin trainer.", 8, 6, 2);
 INSERT INTO characters (character_name, image_link, character_description, speed, intelligence, luck) VALUES ("Rajiv", "./assets/images/pexels-mi.jpeg", "Winner of both India's Got Talent and 'The Indian Bachelor'.", 0, 8, 8);
 INSERT INTO characters (character_name, image_link, character_description, speed, intelligence, luck) VALUES ("Clarence", "./assets/images/pexels-mwy.jpeg", "Will never win 'The Bachelor'. But makes more money than you.", 3, 10, 5);
-<<<<<<< HEAD
-
-=======
->>>>>>> 34710f4ff1b114c3dd3d14114d2e6ceb0514a40a

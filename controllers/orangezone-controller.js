@@ -12,7 +12,6 @@ module.exports = function(app) {
             res.render('characters', charObj)
         });
     });
-<<<<<<< HEAD
 
     
 
@@ -24,6 +23,3 @@ module.exports = function(app) {
 
 
 }
-=======
-};
->>>>>>> 34710f4ff1b114c3dd3d14114d2e6ceb0514a40a
