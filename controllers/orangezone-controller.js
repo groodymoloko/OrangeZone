@@ -14,10 +14,11 @@ module.exports = function(app) {
     });
 
     app.get('/questions', function(req, res) {
-        db.questions.findAll({}).then(function(results) {
+        db.questions.findAll({}).then(function(result) {
             let qObj = {
-                questions: results
+                questions: result
             };
+            console.log(qObj);
             res.render('questions', qObj)
         });
     });

@@ -1,0 +1,37 @@
+<form method="GET">
+    <div class='container'>
+        <h1>Answer the question first!</h1>
+        <h3>Winner gets a point!</h3>
+        <hr>
+        <div class="container press my-4">
+            <h1></h1>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <!-- Questions will Display Here -->
+                    <div class="flex-container mb-5" id="questions-view">
+                        {{#each questions}}
+                            {{@index}}: {{this}}
+                        <div class="card text-center" style="width: 13rem;">
+                            <div class="card-body">
+                                <h5 class="card-title" id="question">{{this.question}}</h5>
+                                <p class="card-text" id="question-category">{{this.category}}</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">A: <span id="answer">{{this.answer}}</span></li>
+                                <li class="list-group-item">B: <span id="incorrect-one">{{this.wrongOne}}</span></li>
+                                <li class="list-group-item">C: <span id="incorrect-two">{{this.wrongTwo}}</span></li>
+                                <li class="list-group-item">D: <span id="incorrect-three">{{this.wrongThree}}</span></li>
+                            </ul>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</form>
