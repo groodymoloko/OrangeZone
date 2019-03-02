@@ -1,5 +1,5 @@
 // REQUIRE MODELS
-let db = require('../models/');
+const db = require('../models/');
 
 // Routes
 module.exports = function(app) {
@@ -10,6 +10,15 @@ module.exports = function(app) {
                 characters: result
             };
             res.render('characters', charObj)
+        });
+    });
+
+    app.get('/questions', function(req, res) {
+        db.questions.findAll({}).then(function(results) {
+            let qObj = {
+                questions: results
+            };
+            res.render('questions', qObj)
         });
     });
 
