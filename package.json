@@ -9,7 +9,8 @@
     "express-session": "^1.15.6",
     "mysql2": "^1.6.5",
     "sequelize": "^4.42.0",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.2.0",
+    "vue.js": "^0.3.2"
   },
   "devDependencies": {},
   "scripts": {

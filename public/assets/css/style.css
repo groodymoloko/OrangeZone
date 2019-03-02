@@ -1,0 +1,126 @@
+html {
+    position: relative;
+    min-height: 100%;
+    box-sizing: border-box;
+    color: orange;
+}
+
+body {
+    font-family: gso;
+    background-image: url(../images/dinosaurs.jpg);
+    transition: background 1s linear;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: black;
+}
+
+.btn-warning {
+    font-weight: bold;
+    background-color: orange;
+    border-color: black;
+}
+
+.btn-primary {
+    font-weight: bold;
+    background-color: grey;
+    border-color: black;
+}
+
+.btn-warning:hover, .btn-warning:focus, .btn-warning:active:focus, .btn-warning:active, .btn-warning.active, .open>.dropdown-toggle.btn-warning {
+    color: orange;
+    background-color: grey;
+    border-color: black;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: orange;
+    background-color: grey;
+    border-color: black;
+}
+
+.navbar {
+    font-size: 20px;
+    width: 100%;
+    right: 0;
+    left: 0;
+}
+
+#brand_title {
+    color: orange;
+}
+
+#brand_title2 {
+    color: orange;
+    margin-left: 150px;
+}
+
+#create_account {
+    margin-left: 40px;
+}
+
+#dinologo {
+    float: left;
+    padding: 0px;
+    margin-top: 0px;
+    margin-right: 10px;
+    width: 117px;
+    height: 91px;
+}
+
+/* Wireframing */
+#leaderboard {
+    min-height: 80px;
+}
+#player_score {
+    min-height: 80px;
+}
+#player_picture {
+    min-height: 275px;
+}
+#player_total_score {
+    min-height: 80px;
+}
+#player_right_count {
+    min-height: 80px;
+}
+#player_wrong_count {
+    min-height: 80px;
+}
+#question {
+    min-height: 100px;
+}
+#answer_a {
+    min-height: 100px;
+}
+#answer_b {
+    min-height: 100px;
+}
+#answer_c {
+    min-height: 100px;
+}
+#answer_d {
+    min-height: 100px;
+}
+#opponent_score {
+    min-height: 80px;
+}
+#opponent_picture {
+    min-height: 275px;
+}
+#opponent_total_score {
+    min-height: 80px;
+}
+#opponent_right_count {
+    min-height: 80px;
+}
+#opponent_wrong_count {
+    min-height: 80px;
+}
+
+/* Galiver Sans Obliques font file */
+@font-face {
+    font-family: "gso";
+    src: url(../fonts/SGALS.ttf);
+}

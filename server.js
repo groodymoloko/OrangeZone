@@ -17,10 +17,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static directory
-// app.use(express.static('node_modules'));
-// app.use("/public", express.static(__dirname + "/public"));
-// app.use("/js", express.static(__dirname + "/public/js"));
 app.use(express.static("public"));
+
+// Set Handlebars.
+let exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+require("./controllers/orangezone-controller")(app);
+
 
 // app.get("/", function(req, res) {
 //     res.sendFile(__dirname + "/public/index.html");
@@ -43,7 +49,7 @@ io.on("connection", (socket) => {
 // Requiring our models for syncing
 var db = require("./models");
 
-db.sequelize.sync({force: true}).then(function() {
+db.sequelize.sync().then(function() {
     server.listen(PORT, () => {
         console.log("Server is listening on localhost: " + PORT);
     });

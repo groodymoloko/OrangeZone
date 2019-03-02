@@ -1,11 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Gbpackers11488",
     "database": "orangezone_db",
-    "host": "127.0.0.1",
-    "port": 3306,
-    "dialect": "mysql"
   },
   "test": {
     "username": "root",
