@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "database": "orangezone_db",
+    "database": "orangezone_db"
   },
   "test": {
     "username": "root",
