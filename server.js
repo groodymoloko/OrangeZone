@@ -17,9 +17,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static directory
-// app.use(express.static('node_modules'));
-// app.use("/public", express.static(__dirname + "/public"));
-// app.use("/js", express.static(__dirname + "/public/js"));
 app.use(express.static("public"));
 
 // app.get("/", function(req, res) {
@@ -28,6 +25,11 @@ app.use(express.static("public"));
 require("./routes/html-routes")(app);
 require("./routes/login")(app);
 
+// Set Handlebars.
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 
 io.on("connection", (socket) => {
