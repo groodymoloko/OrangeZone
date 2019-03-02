@@ -4,7 +4,7 @@ let db = require('../models/');
 // Routes
 module.exports = function(app) {
     // Get route for characters
-    app.get('/', function(req, res) {
+    app.get('/register', function(req, res) {
         db.character.findAll({}).then(function(result) {
             let charObj = {
                 characters: result
