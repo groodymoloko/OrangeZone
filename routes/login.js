@@ -32,6 +32,8 @@ module.exports = function(app){
     app.post('/register', function(request, response) {
         let username = request.body.username;
         let password = request.body.password;
+        let image = request.body.profilepic;
+        console.log(image);
         if (username && password) {
             db.Account.create(request.body).then(function(dbAccount) {
                 // response.json(dbAccount);
