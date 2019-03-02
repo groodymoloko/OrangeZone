@@ -19,13 +19,13 @@ module.exports = function(app){
                     response.redirect('/');
                 } 
                 else if (dbAccount == null){
-                    response.send('Incorrect Username and/or Password!');
+                    response.send('Incorrect Username and/or Password!(Username minimum 6 characters and password min 4 characters.)');
                 }			
                 response.end();
               });
         } 
         else {
-            response.send('Please enter Username and Password!');
+            response.send('Please enter Username and Password! (Username minimum 6 characters and password min 4 characters.)');
             response.end();
         }
     });
@@ -42,13 +42,13 @@ module.exports = function(app){
                     response.redirect('/login');
                 } 
                 else if (dbAccount == null){
-                    response.send('Incorrect Username and/or Password!');
+                    response.send('Incorrect Username and/or Password!(Username minimum 6 characters and password min 4 characters.)');
                 }			
                 response.end();
               });
         } 
         else {
-            response.send('Please enter Username and Password!');
+            response.send('Please enter Username and Password!(Username minimum 6 characters and password min 4 characters.)');
             response.end();
         }
     });

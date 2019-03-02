@@ -1,11 +1,7 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
-    "password": "groot",
-=======
-    "password": "",
->>>>>>> 34710f4ff1b114c3dd3d14114d2e6ceb0514a40a
+    "password": "Gbpackers11488",
     "database": "orangezone_db",
     "host": "127.0.0.1",
     "port": 3306,
