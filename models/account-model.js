@@ -13,6 +13,13 @@ module.exports = function(sequelize, DataTypes) {
         validate:{
             len: [5, 20]
         }
+      },
+      profilepic: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        // validate:{
+        //     len: [5, 20]
+        // }
       }
     });
   
