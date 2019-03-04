@@ -30,7 +30,7 @@ module.exports = function(app){
         }
     });
     app.post('/register', [
-        check("username").isEmpty().withMessage("Username field cannot be empty."),
+        // check("username").isEmpty().withMessage("Username field cannot be empty."),
         check("username").isLength({min: 4, max:15}).withMessage("Username must be between 4-15 characters long."),
         check("password").withMessage( "Password must be between 8-100 characters long.")
         .isLength({min: 8,max: 100})
