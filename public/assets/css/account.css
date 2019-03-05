@@ -1,0 +1,64 @@
+/* This CSS file styles the login and account creation pages */
+
+html {
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;    
+    font-family: gso;
+    background-image: url(../images/login.png);
+    transition: background 1s linear;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: black;
+    color: white;
+    margin-top: 60px;
+    font-size: 30px;
+}
+
+.btn-primary {
+    font-weight: bold;
+    background-color: grey;
+    border-color: black;
+}
+  
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+color: orange;
+background-color: grey;
+border-color: black;
+}
+
+.login-form {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.login-form input[type="password"],
+.login-form input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #dddddd;
+    margin-bottom: 15px;
+    box-sizing:border-box;
+}
+.login-form input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #535b63;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Galiver Sans Obliques font file */
+@font-face {
+    font-family: "gso";
+    src: url(../fonts/SGALS.ttf);
+}

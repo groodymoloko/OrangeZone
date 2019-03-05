@@ -1,5 +1,68 @@
-h1 {
-  background-color: #e9d14b
+/* This CSS page styles the characters handlebar popoulation and is specified in main.handlebars */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;    
+  font-family: gso;
+  font-size: 24px;
+  background-image: url(../images/dinosaurs.jpg);
+  transition: background 1s linear;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: black;
+  color: white;
+}
+
+.btn-primary {
+  font-weight: bold;
+  background-color: grey;
+  border-color: black;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+  color: orange;
+  background-color: grey;
+  border-color: black;
+}
+
+#form_column {
+  background-color: rgba(192,192,192,0.7);
+  text-align: center;
+  border-radius: 5px;
+  height: 100%;
+}
+
+h2 {
+  padding-left: 2%;
+  border-radius: 5px;
+  background: orange;
+  width: 400px;
+}
+
+input {
+  width: 400px;
+}
+
+#barney_image {
+  max-width: 100%;
+  height: auto;
+}
+
+.btn-warning {
+  font-weight: bold;
+  background-color: orange;
+  border-color: black;
 }
 
 .flex-container {
@@ -10,30 +73,40 @@ h1 {
 }
 
 .character-image {
-    /* margin: 4px; */
-    font-family: 'Orbitron', sans-serif;
-    background-color: mediumpurple;
-    border: 4px outset purple;
+    margin: 0px;
+    background-color: orange;
+    border: 4px outset grey;
     opacity: 1;
-    /* transition: .5s ease; */
-    /* backface-visibility: hidden; */
+}
+
+.image-button:focus, .image-button:active:focus, .image-button:active {
+    cursor: pointer;
+    opacity: 0.70;
 }
 
 .character-image:hover {
-    cursor: pointer;
-    opacity: 0.70;;
-    outline: 3px outset rgb(144, 120, 194);
-    outline-offset: 2px;
+  cursor: pointer;
+  opacity: 0.70;
 }
 
-.imageBox {
-    margin-bottom: 5px;
+.card {
+  background-color: black;
+  width: 200px;
+  height: 450px;
 }
 
-.imageBox:hover {
-    cursor: pointer;
-    outline: 3px outset rgb(144, 120, 194);
-    outline-offset: 2px;
+.card-title {
+  color: orange;
+  font-size: 28px;
+}
+
+.card-text {
+  font-size: 20px;
+}
+
+.list-group-item {
+  background-color: black;
+  font-size: 20px;
 }
 
 /* tooltip1 container */
@@ -64,13 +137,6 @@ h1 {
 }
 
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: black;
-}
-* {
-  box-sizing: border-box;
-}
 /* Add padding to containers */
 .container {
   padding: 16px;
@@ -78,13 +144,14 @@ body {
 }
 /* Full-width input fields */
 input[type=text], input[type=password] {
-  width: 100%;
+  width: 30%;
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
   border: none;
   background: #f1f1f1;
 }
+
 input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
@@ -135,4 +202,10 @@ a {
 [type=radio]:checked + img {
   outline: 2px solid #f3c50c;
   opacity: .70;
+}
+
+/* Galiver Sans Obliques font file */
+@font-face {
+  font-family: "gso";
+  src: url(../fonts/SGALS.ttf);
 }
