@@ -1,6 +1,6 @@
 ### Schema
 
-CREATE DATABASE OrangeZone_DB;
+-- CREATE DATABASE OrangeZone_DB;
 USE OrangeZone_DB;
 
 CREATE TABLE questions (
@@ -15,8 +15,4 @@ CREATE TABLE questions (
     createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY(id)
-<<<<<<< HEAD
-);
-=======
-);
->>>>>>> 34710f4ff1b114c3dd3d14114d2e6ceb0514a40a
+)
