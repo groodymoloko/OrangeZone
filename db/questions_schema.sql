@@ -1,6 +1,6 @@
 ### Schema
 
-CREATE DATABASE OrangeZone_DB;
+-- CREATE DATABASE OrangeZone_DB;
 USE OrangeZone_DB;
 
 CREATE TABLE questions (
