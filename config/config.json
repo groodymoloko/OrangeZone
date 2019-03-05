@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "groot",
+=======
+    "password": "password",
+>>>>>>> 8825c0ab42b77fd74e4cde3bbb6ec84cf68d1415
     "database": "orangezone_db",
     "host": "127.0.0.1",
     "port": 3306,

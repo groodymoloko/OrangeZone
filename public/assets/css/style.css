@@ -1,11 +1,13 @@
+/* This CSS file styles the homepage and the gameover pages */
+
 html {
     position: relative;
-    min-height: 100%;
+    height: 100%;
     box-sizing: border-box;
-    color: orange;
 }
 
 body {
+    height: 100%;    
     font-family: gso;
     background-image: url(../images/dinosaurs.jpg);
     transition: background 1s linear;
@@ -14,6 +16,7 @@ body {
     background-attachment: fixed;
     background-size: cover;
     background-color: black;
+    color: white;
 }
 
 .btn-warning {
@@ -67,6 +70,34 @@ body {
     margin-right: 10px;
     width: 117px;
     height: 91px;
+}
+
+#game_over_loser {
+    background-image: url(../images/losegame.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#game_over_winner {
+    background-image: url(../images/wingame.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#lose_column {
+    margin-top: 25%;
+}
+
+#you_lose {
+    font-size: 60px;
+}
+
+.navbar {
+    background:rgba(0,0,0,0.3) !important;
 }
 
 /* Wireframing */
