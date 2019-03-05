@@ -34,7 +34,7 @@
                         <div class="col-12">
                             <!-- Characters will Display Here -->
                             <div class="flex-container mb-5" id="character-view">
-                                {{#each characters}}
+                                {{#each character.characters}}
                                 <div class="card text-center">
                                     <label class="image-button">
                                         <input type="radio" name="profilepic" value="{{this.image_link}}">
@@ -45,12 +45,7 @@
                                         <h5 class="card-title" id="charname">{{this.character_name}}</h5>
                                         <p class="card-text" id="chardescription">{{this.character_description}}</p>
                                     </div>
-                                    {{!-- <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Speed: <span id="charSpeed">{{this.speed}}</span></li>
-                                        <li class="list-group-item">Intelligence: <span
-                                                id="charInt">{{this.intelligence}}</span></li>
-                                        <li class="list-group-item">Luck: <span id="charLuck">{{this.luck}}</span></li>
-                                    </ul> --}}
+
                                 </div>
                                 {{/each}}
                             </div>

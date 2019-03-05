@@ -9,7 +9,7 @@ module.exports = function(app) {
             let charObj = {
                 characters: result
             };
-            res.render('characters', charObj)
+            res.render('characters', {character: charObj})
         });
     });
 }

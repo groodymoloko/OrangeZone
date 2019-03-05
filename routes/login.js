@@ -44,11 +44,17 @@ module.exports = function(app){
         })
         // check("passwordMatch", "Passwords do not match, please try again.").equals(password)
         ],
-        (request, response) => {   
+        (request, response) => {
         const errors = validationResult(request);
         if(!errors.isEmpty()){
-            console.log(`Errors ${JSON.stringify(errors.array())}`);
-            response.render('characters', {title: "Registration Error", errors: errors.array()});
+            db.character.findAll({}).then(function(result) {
+                let charObj = {
+                    characters: result
+                };
+                console.log(`Errors ${JSON.stringify(errors.array())}`);
+                response.render('characters', {title: "Registration Error", errors: errors.array(), character: charObj});
+            });
+
         }
         else{
             let username = request.body.username;
