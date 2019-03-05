@@ -67,8 +67,8 @@ module.exports = function(app){
                 // response.json(dbAccount);
                 console.log(`===== ${dbAccount} ========`)
                 if (dbAccount !== null) {
-                    request.session.loggedin = true;
-                    request.session.username = username;
+                    // request.session.loggedin = true;
+                    // request.session.username = username;
                     response.redirect('/login');
                 }
         });
