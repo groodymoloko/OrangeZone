@@ -17,7 +17,7 @@ db.questions.findAll({
 
 io.on("connection", (socket) => {
     socket.emit("welcome", "hello and welcome to the socket.io Server");
-    socket.emit("questions", questionArr[0].question);
+    socket.emit("questions", questionArr[0]);
 
     console.log("new client is Connected");
 
