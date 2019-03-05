@@ -1,0 +1,9 @@
+id,character_name,image_link,character_description,speed,intelligence,luck,createdAt,updatedAt
+1,"Big Bird",./assets/images/dino1.png,"Grouchy in the morning",3,6,10,"2019-03-02 13:18:59","2019-03-02 13:18:59"
+2,Oscar,./assets/images/dino2.png,"Plays a mean bass guitar",5,7,4,"2019-03-02 13:18:59","2019-03-02 13:18:59"
+3,Bert,./assets/images/dino3.png,"Ardent anti-vaxxer",8,6,2,"2019-03-02 13:18:59","2019-03-02 13:18:59"
+4,Ernie,./assets/images/dino4.png,"Enjoys long walks on the beach",0,8,8,"2019-03-02 13:18:59","2019-03-02 13:18:59"
+5,Kermit,./assets/images/dino5.png,"Tokes the reefer mon",3,10,5,"2019-03-02 13:18:59","2019-03-02 13:18:59"
+6,"The Count",./assets/images/dino6.png,"Don't eat yellow snow",4,8,3,"2019-03-02 13:18:59","2019-03-02 13:18:59"
+7,Grover,./assets/images/dino7.png,"Thugs 4 Life",3,4,8,"2019-03-02 13:18:59","2019-03-02 13:18:59"
+8,Barneys,./assets/images/dino8.png,"Bring back New Coke",6,9,4,"2019-03-02 13:18:59","2019-03-02 13:18:59"
