@@ -49,7 +49,7 @@ io.on("connection", (socket) => {
 // Requiring our models for syncing
 var db = require("./models");
 
-db.sequelize.sync({force: true}).then(function() {
+db.sequelize.sync().then(function() {
     server.listen(PORT, () => {
         console.log("Server is listening on localhost: " + PORT);
     });
