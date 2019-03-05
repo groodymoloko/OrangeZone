@@ -1,12 +1,21 @@
+
 <form action="register" method="POST">
     <div class="container">
         <h1>Register</h1>
         <p>Please fill in this form to create an account.</p>
         <hr>
+        <h1>{{title}}</h1>
+        {{# if errors}}
+            {{# each errors}}
+                {{this.msg}}
+            {{/each}}
+        {{/if}}
+        <hr>
         <!-- <label for="username"><b>Username</b></label> -->
         <input type="text" placeholder="Enter Username" name="username" required>
         <!-- <label for="psw"><b>Password</b></label> -->
         <input type="password" placeholder="Enter Password" name="password" required>
+        <input type="passwordMatch" placeholder="Re-enter Password" name="passwordMatch" required>
         <hr>
         <div class="container press my-4">
             <h1>Choose Your Character!</h1>
