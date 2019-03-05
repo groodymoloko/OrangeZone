@@ -33,18 +33,10 @@ require("./controllers/orangezone-controller")(app);
 // });
 require("./routes/html-routes")(app);
 require("./routes/login")(app);
+require("./controllers/server_game_controller")(io);
 
 
 
-io.on("connection", (socket) => {
-    socket.emit("welcome", "hello and welcome to the socket.io Server");
-    console.log("new client is Connected");
-
-    socket.on('disconnect', function () {
-        io.emit('user disconnected');
-        console.log("user disconnected");
-    });
-});
 
 // Requiring our models for syncing
 var db = require("./models");
