@@ -1,3 +1,8 @@
+let question = document.getElementById('question');
+let answerA = document.getElementById('answer_a');
+let answerB = document.getElementById('answer_b');
+let answerC = document.getElementById('answer_c');
+let answerD = document.getElementById('answer_d');
 
 let question = document.getElementById('question');
 let answerA = document.getElementById('answer_a');
