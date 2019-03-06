@@ -21,6 +21,20 @@ io.on("connection", (socket) => {
 
     console.log("new client is Connected");
 
+    socket.on('answer', function(data) {
+        if(data === 'a') {
+            //answer is correct
+            db.accounts.update({
+                // need to update score here
+            }).then(function(updateScore) {
+                // print new user score to screen
+            })
+        }
+        else {
+            //answer is not correct, no change to user score
+        }
+    });
+
     socket.on('disconnect', function () {
         io.emit('user disconnected');
         console.log("user disconnected");

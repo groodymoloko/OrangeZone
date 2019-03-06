@@ -61,14 +61,29 @@
         <div class="col-lg-6" id="question_pane">
             <div class="row" id="question">QUESTION
             </div>
-            <div class="row" id="answer_a">ANSWER A
-            </div>
-            <div class="row" id="answer_b">ANSWER B
-            </div>
-            <div class="row" id="answer_c">ANSWER C
-            </div>
-            <div class="row" id="answer_d">ANSWER D
-            </div>
+            <label class="answer-button row">
+                <input type="radio" name="answerBtn" value="a">
+                <div id="answer_a">ANSWER A
+                </div>
+            </label>
+            <label class="answer-button row">
+                <input type="radio" name="answerBtn" value="b">
+                <div id="answer_b">ANSWER B
+                </div>
+            </label>
+            <label class="answer-button row">
+                <input type="radio" name="answerBtn" value="c">    
+                <div id="answer_c">ANSWER C
+                </div>
+            </label>
+            <label class="answer-button row">
+                <input type="radio" name="answerBtn" value="d">    
+                <div id="answer_d">ANSWER D
+                </div>
+            </label>
+            <br>
+            <button type="button" id="submit-answer">Submit Answer</button>    
+
         </div>
         <div class="col-lg-3" id="opponent_pane">
             <div class="row" id="opponent_score">OPPONENT GAME SCORE
