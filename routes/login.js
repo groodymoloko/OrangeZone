@@ -1,5 +1,12 @@
 const db = require("../models");
+const bcrypt = require("bcrypt");
 const { check, validationResult } = require('express-validator/check');
+//number of times it hashes password
+const saltRounds = 10;
+//authentication packages
+const passport = require("passport");
+
+
 module.exports = function(app){
     app.post('/login/auth', function(request, response) {
         let username = request.body.username;
@@ -11,7 +18,6 @@ module.exports = function(app){
                   password: password
                 },
               }).then(function(dbAccount) {
-                // response.json(dbAccount);
                 console.log(`===== ${dbAccount} ========`)
                 if (dbAccount !== null) {
                     request.session.loggedin = true;
@@ -42,16 +48,15 @@ module.exports = function(app){
                 return value;
             }
         })
-        // check("passwordMatch", "Passwords do not match, please try again.").equals(password)
-        ],
-        (request, response) => {
+    ],
+    (request, response) => {
         const errors = validationResult(request);
         if(!errors.isEmpty()){
             db.character.findAll({}).then(function(result) {
                 let charObj = {
                     characters: result
                 };
-                console.log(`Errors ${JSON.stringify(errors.array())}`);
+                // console.log(`Errors ${JSON.stringify(errors.array())}`);
                 response.render('characters', {title: "Registration Error", errors: errors.array(), character: charObj});
             });
 
@@ -61,38 +66,34 @@ module.exports = function(app){
             let password = request.body.password;
             let passwordMatch = request.body.passwordMatch;
             let image = request.body.profilepic;
-            console.log("this is the image url"+ image);
-
-            db.Account.create(request.body).then(function(dbAccount) {
-                // response.json(dbAccount);
-                console.log(`===== ${dbAccount} ========`)
-                if (dbAccount !== null) {
-                    // request.session.loggedin = true;
-                    // request.session.username = username;
-                    response.redirect('/login');
-                }
-        });
+            bcrypt.hash(password, saltRounds, function(err, hash) {
+                // Store hash in your password DB.
+                db.Account.create({
+                    username: username,
+                    password: hash,
+                    profilepic: image
+                }).then(function(dbAccount) {
+                    console.log(`===== ${dbAccount} ========`)
+                    // if (dbAccount !== null) {
+                        // request.session.loggedin = true;
+                        // request.session.username = username;
+                        request.login(dbAccount, function(err){
+                            response.redirect('/');
+                        });
+                    // }
+                });
+            });
         }
-
-
-        // if (username && password) {
-        //     db.Account.create(request.body).then(function(dbAccount) {
-        //         // response.json(dbAccount);
-        //         console.log(`===== ${dbAccount} ========`)
-        //         if (dbAccount !== null) {
-        //             request.session.loggedin = true;
-        //             request.session.username = username;
-        //             response.redirect('/login');
-        //         } 
-        //         else if (dbAccount == null){
-        //             response.send('Incorrect Username and/or Password!');
-        //         }			
-        //         response.end();
-        //       });
-        // } 
-        // else {
-        //     response.send('Please enter Username and Password!');
-        //     response.end();
-        // }
     });
 };
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+  
+passport.deserializeUser(function(id, done) {
+    db.Account.findOne({where: {id: id}})
+    .then(function(user) {
+        ne(null, user);
+    });
+});

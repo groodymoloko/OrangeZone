@@ -1,4 +1,5 @@
 const path = require("path");
+// const passport = require("passport");
 
 // Routes
 // =============================================================
@@ -8,6 +9,8 @@ module.exports = function(app) {
 
   // index route loads index.html
   app.get("/", function(req, res) {
+    console.log("===============" + req.user);
+    console.log("===============" + req.isAuthenticated());
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 
