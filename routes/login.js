@@ -19,10 +19,14 @@ passport.use(new LocalStrategy(
             // if (!user.validPassword(password)) {
             //   return done(null, false, { message: 'Incorrect password.' });
             // }
-            const hash = user.password;
-            bcrypt.compare(password, hash, function(err, response){
-                return done(null, user);
-            });
+            else{
+                const hash = user.password;
+                bcrypt.compare(password, hash, function(err, response){
+                    if(response === true){
+                    return done(null, user);
+                    }
+                });
+            }
         });
     }
 ));
