@@ -3,14 +3,12 @@
 
 <form action="register" method="POST" class="h-100">
     
-    <hr>
         <h2>{{title}}</h2>
         {{# if errors}}
             {{# each errors}}
                 {{this.msg}}
             {{/each}}
         {{/if}}
-    <hr>
     
     <div class="container-fluid h-100">
         <div class="row h-100" id="create_account_pane">

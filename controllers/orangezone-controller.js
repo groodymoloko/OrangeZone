@@ -12,5 +12,9 @@ module.exports = function(app) {
             res.render('characters', {character: charObj})
         });
     });
+<<<<<<< HEAD
 
 }
+=======
+};
+>>>>>>> 32fc10f2802c55a5134bc706cd4c3466b1e8ae3c
