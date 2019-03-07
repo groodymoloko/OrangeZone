@@ -67,32 +67,12 @@ module.exports = function(app){
                 // response.json(dbAccount);
                 console.log(`===== ${dbAccount} ========`)
                 if (dbAccount !== null) {
-                    request.session.loggedin = true;
-                    request.session.username = username;
+                    // request.session.loggedin = true;
+                    // request.session.username = username;
                     response.redirect('/login');
                 }
         });
         }
 
-
-        // if (username && password) {
-        //     db.Account.create(request.body).then(function(dbAccount) {
-        //         // response.json(dbAccount);
-        //         console.log(`===== ${dbAccount} ========`)
-        //         if (dbAccount !== null) {
-        //             request.session.loggedin = true;
-        //             request.session.username = username;
-        //             response.redirect('/login');
-        //         } 
-        //         else if (dbAccount == null){
-        //             response.send('Incorrect Username and/or Password!');
-        //         }			
-        //         response.end();
-        //       });
-        // } 
-        // else {
-        //     response.send('Please enter Username and Password!');
-        //     response.end();
-        // }
     });
 };
