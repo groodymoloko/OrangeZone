@@ -10,47 +10,56 @@ const path = require("path");
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
-        db.Account.findOne({where: {username: username, password: password}})
+        db.Account.findOne({where: {username: username}})
         .then(function(user) {
+            console.log(user.password);
             if (!user) {
               return done(null, false, { message: 'Incorrect username.' });
             }
-            if (!user.validPassword(password)) {
-              return done(null, false, { message: 'Incorrect password.' });
-            }
-            return done(null, user);
+            // if (!user.validPassword(password)) {
+            //   return done(null, false, { message: 'Incorrect password.' });
+            // }
+            const hash = user.password;
+            bcrypt.compare(password, hash, function(err, response){
+                return done(null, user);
+            });
         });
     }
 ));
 
 module.exports = function(app){
-    app.post('/login/auth', function(request, response) {
-        let username = request.body.username;
-        let password = request.body.password;
-        if (username && password) {
-            db.Account.findOne({
-                where: {
-                  username: username,
-                  password: password
-                },
-              }).then(function(dbAccount) {
-                console.log(`===== ${dbAccount} ========`)
-                if (dbAccount !== null) {
-                    request.session.loggedin = true;
-                    request.session.username = username;
-                    response.redirect('/');
-                } 
-                else if (dbAccount == null){
-                    response.send('Incorrect Username and/or Password!');
-                }			
-                response.end();
-              });
-        } 
-        else {
-            response.send('Please enter Username and Password!');
-            response.end();
-        }
-    });
+    app.post('/login', passport.authenticate(
+        "local", {
+        successRedirect: "/",
+        failureRedirect: "/login"
+        }));
+    // function(request, response) {
+    //     let username = request.body.username;
+    //     let password = request.body.password;
+    //     if (username && password) {
+    //         db.Account.findOne({
+    //             where: {
+    //               username: username,
+    //               password: password
+    //             },
+    //           }).then(function(dbAccount) {
+    //             console.log(`===== ${dbAccount} ========`)
+    //             if (dbAccount !== null) {
+    //                 request.session.loggedin = true;
+    //                 request.session.username = username;
+    //                 response.redirect('/');
+    //             } 
+    //             else if (dbAccount == null){
+    //                 response.send('Incorrect Username and/or Password!');
+    //             }			
+    //             response.end();
+    //           });
+    //     } 
+    //     else {
+    //         response.send('Please enter Username and Password!');
+    //         response.end();
+    //     }
+    // });
     app.post('/register', [
         // check("username").isEmpty().withMessage("Username field cannot be empty."),
         check("username").isLength({min: 4, max:15}).withMessage("Username must be between 4-15 characters long."),
