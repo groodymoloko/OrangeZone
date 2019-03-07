@@ -171,3 +171,35 @@ body {
     font-family: "gso";
     src: url(../fonts/SGALS.ttf);
 }
+
+/* ETHAN ADDITIONS 3/6 */
+/* HIDE RADIO */
+[type=radio] { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* IMAGE STYLES */
+  [type=radio] + div {
+    cursor: pointer;
+  }
+  
+  /* CHECKED STYLES */
+  [type=radio]:checked + div {
+    outline: 2px solid #f3c50c;
+    opacity: .70;
+  }
+
+.answer-button {
+    background-color: #31ce74;
+    text-align: center;
+    
+}
+
+#submit-answer {
+    background-color: #92442e;
+    text-align: center;
+    cursor: pointer;
+}
