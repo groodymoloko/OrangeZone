@@ -36,34 +36,11 @@ module.exports = function(app){
         "local", {
         successRedirect: "/",
         failureRedirect: "/login"
-        }));
-    // function(request, response) {
-    //     let username = request.body.username;
-    //     let password = request.body.password;
-    //     if (username && password) {
-    //         db.Account.findOne({
-    //             where: {
-    //               username: username,
-    //               password: password
-    //             },
-    //           }).then(function(dbAccount) {
-    //             console.log(`===== ${dbAccount} ========`)
-    //             if (dbAccount !== null) {
-    //                 request.session.loggedin = true;
-    //                 request.session.username = username;
-    //                 response.redirect('/');
-    //             } 
-    //             else if (dbAccount == null){
-    //                 response.send('Incorrect Username and/or Password!');
-    //             }			
-    //             response.end();
-    //           });
-    //     } 
-    //     else {
-    //         response.send('Please enter Username and Password!');
-    //         response.end();
-    //     }
-    // });
+    }));
+    app.get('/logout', function(req, res){
+        req.logout();
+        res.redirect('/');
+    });
     app.post('/register', [
         // check("username").isEmpty().withMessage("Username field cannot be empty."),
         check("username").isLength({min: 4, max:15}).withMessage("Username must be between 4-15 characters long."),

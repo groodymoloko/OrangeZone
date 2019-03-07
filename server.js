@@ -26,6 +26,11 @@ app.use(session({
 //set up passport.js
 app.use(passport.initialize());
 app.use(passport.session());
+//sends is authenticated to all routes
+app.use(function(req, res, next) {
+    res.locals.isAuthenticated = req.isAuthenticated();
+    next();
+})
 
 // Set Handlebars.
 const exphbs = require("express-handlebars");
