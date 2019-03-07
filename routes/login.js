@@ -5,7 +5,23 @@ const { check, validationResult } = require('express-validator/check');
 const saltRounds = 10;
 //authentication packages
 const passport = require("passport");
+const LocalStrategy = require('passport-local').Strategy;
+const path = require("path");
 
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+        db.Account.findOne({where: {username: username, password: password}})
+        .then(function(user) {
+            if (!user) {
+              return done(null, false, { message: 'Incorrect username.' });
+            }
+            if (!user.validPassword(password)) {
+              return done(null, false, { message: 'Incorrect password.' });
+            }
+            return done(null, user);
+        });
+    }
+));
 
 module.exports = function(app){
     app.post('/login/auth', function(request, response) {
@@ -59,7 +75,6 @@ module.exports = function(app){
                 // console.log(`Errors ${JSON.stringify(errors.array())}`);
                 response.render('characters', {title: "Registration Error", errors: errors.array(), character: charObj});
             });
-
         }
         else{
             let username = request.body.username;
@@ -73,7 +88,7 @@ module.exports = function(app){
                     password: hash,
                     profilepic: image
                 }).then(function(dbAccount) {
-                    console.log(`===== ${dbAccount} ========`)
+                    console.log(`===== ${dbAccount.id} ========`)
                     // if (dbAccount !== null) {
                         // request.session.loggedin = true;
                         // request.session.username = username;
@@ -85,6 +100,9 @@ module.exports = function(app){
             });
         }
     });
+    app.get("/bigbrains", authenticationMiddleware() ,function(req, res) {
+      res.sendFile(path.join(__dirname, "../public/big_brains.html"));
+    });
 };
 
 passport.serializeUser(function(user, done) {
@@ -94,6 +112,15 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(id, done) {
     db.Account.findOne({where: {id: id}})
     .then(function(user) {
-        ne(null, user);
+        done(null, user);
     });
 });
+
+function authenticationMiddleware() {  
+	return (req, res, next) => {
+		console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
+
+	    if (req.isAuthenticated()) return next();
+	    res.redirect('/login')
+	}
+}
