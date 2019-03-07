@@ -1,44 +1,91 @@
 const db = require("../models");
 
 let questionArr;
+let userArr = [];
+let qIndex = 0;
+let player1 = userArr[0];
+let player2 = userArr[1];
 
-module.exports = function(io) {
-db.questions.findAll({
-    where: {
-        category: "Sports"
-    },
-}).then(function(result){
-    // let qObj = {
-    //     questions: result
-    // };
-    questionArr = result;
-    // console.log(questionArr);
-});
-
-io.on("connection", (socket) => {
-    socket.emit("welcome", "hello and welcome to the socket.io Server");
-    socket.emit("questions", questionArr[0]);
-
-    console.log("new client is Connected");
-
-    socket.on('answer', function(data) {
-        if(data === 'a') {
-            //answer is correct
-            db.accounts.update({
-                // need to update score here
-            }).then(function(updateScore) {
-                // print new user score to screen
-            })
-        }
-        else {
-            //answer is not correct, no change to user score
-        }
+module.exports = function (io) {
+    // Grabbing 10 questions for current quiz
+    db.questions.findAll({
+        where: {
+            category: "Sports"
+        },
+    }).then(function (result) {
+        questionArr = result;
     });
 
-    socket.on('disconnect', function () {
-        io.emit('user disconnected');
-        console.log("user disconnected");
+    // Grabbing current account information
+    // db.accounts.findAll({
+
+    // }).then(function(result) {
+    //     userArr = result;
+    // });
+
+    
+    io.on("connection", (socket) => {
+        socket.emit("welcome", "hello and welcome to the socket.io Server");
+        userArr.push(socket.id);
+        socket.broadcast.emit('playerArray', userArr);
+        console.log(userArr);
+        console.log("new client is Connected");
+
+        function questionGen() {
+            if(qIndex < 5 ) {
+                socket.emit("questions", questionArr[qIndex]);       
+            }
+            // // Compare scores - if winner, redirect to winning page
+            // else if () {
+                
+            //     app.get('/gamewin', function(req, res) {
+
+            //     })
+            // }
+            // // Redirect to losing page
+            // else {
+            //     app.get('/gamelose', function(req, res) {
+
+            //     })
+            // }
+        }
+        
+        questionGen();
+
+        // Handle right answer new question
+        function newRight() {
+            qIndex++;
+            console.log(qIndex);
+            questionGen();
+        }
+    
+         // Handle wrong answer new question
+         function newWrong() {
+            qIndex++;
+            console.log(qIndex);
+            questionGen();
+        }
+
+
+        socket.on('answer', function (data) {
+            if (data === 'a') {
+                //answer is correct
+                io.sockets.emit('right');
+                newRight();
+            }
+            else {
+                //answer is not correct, no change to user score
+                io.sockets.emit('wrong');
+                newWrong();
+            }
+        });
+
+        socket.on('disconnect', function () {
+            io.emit('user disconnected');
+            userArr = [];
+            console.log("user disconnected");
+        });
+
     });
 
-});
 }
