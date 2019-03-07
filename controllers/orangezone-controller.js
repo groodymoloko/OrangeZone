@@ -5,9 +5,9 @@ let db = require('../models/');
 module.exports = function(app) {
     app.get('/', function(req, res) {
         console.log("index ran")
-        console.log("===============" + req.user);
+        console.log("===============" + JSON.stringify(req.user));
         console.log("===============" + req.isAuthenticated());
-        res.render('index', {ran: "is running"});
+        res.render('index', );
     });
     // Get route for characters
     app.get('/register', function(req, res) {

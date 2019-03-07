@@ -39,6 +39,7 @@ module.exports = function(app){
     }));
     app.get('/logout', function(req, res){
         req.logout();
+        req.session.destroy();
         res.redirect('/');
     });
     app.post('/register', [
@@ -91,7 +92,12 @@ module.exports = function(app){
         }
     });
     app.get("/bigbrains", authenticationMiddleware() ,function(req, res) {
-      res.sendFile(path.join(__dirname, "../public/big_brains.html"));
+    //   res.sendFile(path.join(__dirname, "../public/big_brains.html"));
+        let user = {
+            username: req.user.username,
+            image: req.user.profilepic
+        }
+        res.render("bigBrains", {layout: "game.handlebars", user: user});
     });
 };
 

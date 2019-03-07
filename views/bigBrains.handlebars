@@ -1,0 +1,77 @@
+<nav class="navbar bg-dark">
+    <div>
+    <a class="navbar-brand" href="index.html">
+        <div id="dinologo">
+            <img src="assets/images/dinosaur.png" alt="OrangeDinosaur">
+        </div>
+        <div>
+            <h1 id="brand_title">Orange Zone</h1>
+        </div>
+        <div>
+            <h2 id="brand_title2">Gaming</h2>
+        </div>
+    </a>
+    </div>
+
+
+    {{!-- <div class="btn-group" role="group" aria-label="Games">
+    <button type="button" class="btn btn-warning btn-lg" id="big_brains">Big Brains</button>
+    <button type="button" class="btn btn-warning btn-lg" id="shark_attack">Shark Attack!</button>
+    <button type="button" class="btn btn-warning btn-lg" id="spaceballs">Spaceballs</button>
+    <button type="button" class="btn btn-warning btn-lg" id="gold_digger">Gold Digger</button>
+    <button type="button" class="btn btn-warning btn-lg" id="elspeths_revenge">Elspeth's Revenge</button>
+    </div> --}}
+</nav>
+
+<div class=container-fluid>
+    <div class="row">
+        <div class="col-lg-12 text-center" id="leaderboard">LEADERBOARD
+        </div> 
+    </div>
+    
+    <div class="row">
+    <div class="col-lg-3" id="player_pane">
+        <div class="row" id="player_score"><h1>{{this.user.username}}</h1>
+        </div>
+        <div class="row" id="player_picture">PLAYER PICTURE
+        </div>
+        <div class="row" id="player_total_score">LIFETIME SCORE
+        </div>
+        <div class="row">
+            <div class="col-lg-6" id="player_right_count"># RIGHT
+            </div>
+            <div class="col-lg-6" id="player_wrong_count"># WRONG
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6" id="question_pane">
+        <div class="row" id="question">QUESTION
+        </div>
+        <div class="row" id="answer_a">ANSWER A
+        </div>
+        <div class="row" id="answer_b">ANSWER B
+        </div>
+        <div class="row" id="answer_c">ANSWER C
+        </div>
+        <div class="row" id="answer_d">ANSWER D
+        </div>
+    </div>
+    <div class="col-lg-3" id="opponent_pane">
+        <div class="row" id="opponent_score">OPPONENT GAME SCORE
+        </div>
+        <div class="row" id="opponent_picture">OPPONENT PICTURE
+        </div>
+        <div class="row" id="opponent_total_score">LIFETIME SCORE
+        </div>
+        <div class="row">
+            <div class="col-lg-6" id="opponent_right_count"># RIGHT
+            </div>
+            <div class="col-lg-6" id="opponent_wrong_count"># WRONG
+            </div>
+        </div>
+    </div>  
+    </div>
+
+</div>
+
+
