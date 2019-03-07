@@ -6,7 +6,9 @@ let answerD = document.getElementById('answer_d');
 
 let currentRight = 0;
 let currentWrong = 0;
-let playerArray;
+let playerArray = [];
+let player1 = userArr[0];
+let player2 = userArr[1];
 
 let socket = io();
 console.log("game.js ran");
@@ -15,7 +17,7 @@ socket.on("welcome", function(data) {
 });
 
 socket.on('playerArray', function(data) {
-    playerArray = data;
+    playerArray.push(data);
     console.log(playerArray);
 });
 
@@ -54,5 +56,5 @@ $("#submit-answer").on("click", function(event) {
     let userGuess = $(`input[name='answerBtn']:checked`).val();
     console.log(userGuess);
     
-    socket.emit('answer', userGuess);
+    socket.emit('answer', userGuess); // Contains  socket ID of user who clicked?
 });        

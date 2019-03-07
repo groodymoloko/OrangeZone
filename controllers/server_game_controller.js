@@ -68,6 +68,7 @@ module.exports = function (io) {
 
 
         socket.on('answer', function (data) {
+            // Can we pull socket ID here to determine which user answered?
             if (data === 'a') {
                 //answer is correct
                 io.sockets.emit('right');
