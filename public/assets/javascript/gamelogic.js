@@ -50,7 +50,7 @@ socket.on('wrong', function() {
 });
 
 
-$("#submit-answer").on("click", function(event) {
+$(".submit-answer").on("click", function(event) {
     event.preventDefault();
 
     let userGuess = $(`input[name='answerBtn']:checked`).val();
