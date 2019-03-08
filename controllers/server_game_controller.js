@@ -16,16 +16,15 @@ module.exports = function (io) {
         questionArr = result;
     });
 
-    // Grabbing current account information
-    // db.accounts.findAll({
-
-    // }).then(function(result) {
-    //     userArr = result;
-    // });
-
+    db.Account.findAll({
+        group: ['lifetimescore'],
+    }).then(function (result) {
+        console.log("I have the lifetime max score:", result);
+    });
     
     io.on("connection", (socket) => {
         socket.emit("welcome", "hello and welcome to the socket.io Server");
+        socket.emit()
         userArr.push(socket.id);
         socket.broadcast.emit('playerArray', userArr);
         console.log(userArr);
@@ -52,20 +51,20 @@ module.exports = function (io) {
         
         questionGen();
 
+
         // Handle right answer new question
         function newRight() {
             qIndex++;
             console.log(qIndex);
-            questionGen();
+            setTimeout(questionGen, 1500);
         }
     
          // Handle wrong answer new question
          function newWrong() {
             qIndex++;
             console.log(qIndex);
-            questionGen();
+            setTimeout(questionGen, 1500);
         }
-
 
         socket.on('answer', function (data) {
             if (data === 'a') {

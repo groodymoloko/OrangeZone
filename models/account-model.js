@@ -17,9 +17,9 @@ module.exports = function(sequelize, DataTypes) {
       profilepic: {
         type: DataTypes.STRING,
         allowNull: false,
-        // validate:{
-        //     len: [5, 20]
-        // }
+      },
+      lifetimescore: {
+        type: DataTypes.INTEGER,
       }
     });
   
