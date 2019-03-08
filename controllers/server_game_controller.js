@@ -28,13 +28,12 @@ module.exports = function (io) {
         socket.emit();
         userArr.push(socket.request.user.username);
         socket.broadcast.emit('playerArray', userArr);
-        socket.broadcast.emit('userPic', socket.request.user.profilepic);
         console.log(userArr);
-        console.log(`User pic pathway is ${socket.request.user.profilepic}`);
         console.log("new client is Connected");
-
+        
         function questionGen() {
             if(qIndex < 5 ) {
+                socket.emit('userInfo', socket.request.user);
                 socket.emit("questions", questionArr[qIndex]);       
             }
             // // Compare scores - if winner, redirect to winning page

@@ -8,8 +8,8 @@ console.log("hello gamelogic has run");
 let currentRight = 0;
 let currentWrong = 0;
 let playerArray = [];
-// let player1 = userArr[0];
-// let player2 = userArr[1];
+let player1 = playerArray[0];
+let player2 = playerArray[1];
 
 let socket = io();
 console.log("gamelogic.js ran");
@@ -22,8 +22,15 @@ socket.on('playerArray', function(data) {
     console.log(playerArray);
 });
 
-socket.on('userPic', function(data) {
-    $('#player1pic').attr('src', data);
+socket.on('userInfo', function(data) {
+    if(data.id === 1) {
+        $('#player1name').text(data.username);
+        $('#player1pic').attr('src', data.profilepic);
+    }
+    else if(data.id === 2) {
+        $('#player2name').text(data.username);
+        $('#player2pic').attr('src', data.profilepic);
+    }
 });
     
 
