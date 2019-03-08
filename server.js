@@ -11,6 +11,7 @@ const MySQLStore = require('express-mysql-session')(session);
 const passport = require("passport");
 const io = require("socket.io")(server);
 const passportSocketIo = require("passport.socketio");
+const cookieParser = require("cookie-parser");
 
 
 console.log(config.username);
@@ -38,6 +39,7 @@ app.use(session({
     // cookie: {secure: true}
 }));
 //set up passport.js
+app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 //sends is authenticated to all routes
@@ -45,14 +47,19 @@ app.use(function(req, res, next) {
     res.locals.isAuthenticated = req.isAuthenticated();
     next();
 });
+io.use(passportSocketIo.authorize({
+    cookieParser: cookieParser,       // the same middleware you registrer in express
+    key:          'connect.sid',       // the name of the cookie where express/connect stores its session_id
+    secret:       'itsasecret',    // the session_secret to parse the cookie
+    store:        sessionStore,        // we NEED to use a sessionstore. no memorystore please
+    // success:      onAuthorizeSuccess,  // *optional* callback on success - read more below
+    // fail:         onAuthorizeFail,     // *optional* callback on fail/error - read more below
+}));
 
 // Set Handlebars.
 const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-
-
-
 
 // app.get("/", function(req, res) {
 //     res.sendFile(__dirname + "/public/index.html");
