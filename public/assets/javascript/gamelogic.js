@@ -22,6 +22,10 @@ socket.on('playerArray', function(data) {
     console.log(playerArray);
 });
 
+socket.on('userPic', function(data) {
+    $('#player1pic').attr('src', data);
+});
+
 
 socket.on("questions", function(data) {
     console.log(data);

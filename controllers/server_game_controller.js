@@ -28,7 +28,9 @@ module.exports = function (io) {
         socket.emit();
         userArr.push(socket.request.user.username);
         socket.broadcast.emit('playerArray', userArr);
+        socket.broadcast.emit('userPic', socket.request.user.image_link);
         console.log(userArr);
+        console.log(`User pic pathway is ${socket.request.user.image_link}`);
         console.log("new client is Connected");
 
         function questionGen() {
@@ -38,13 +40,13 @@ module.exports = function (io) {
             // // Compare scores - if winner, redirect to winning page
             // else if () {
                 
-            //     app.get('/gamewin', function(req, res) {
+            //     app.get('/winner', function(req, res) {
 
             //     })
             // }
             // // Redirect to losing page
             // else {
-            //     app.get('/gamelose', function(req, res) {
+            //     app.get('/loser', function(req, res) {
 
             //     })
             // }
