@@ -2,6 +2,7 @@ const db = require("../models");
 
 let questionArr;
 let userArr = [];
+let leadersArr = [];
 let qIndex = 0;
 let player1 = userArr[0];
 let player2 = userArr[1];
@@ -19,7 +20,8 @@ module.exports = function (io) {
     db.Account.findAll({
         group: ['lifetimescore'],
     }).then(function (result) {
-        console.log("I have the lifetime max score:", result);
+        leaders = result[0].username;
+        console.log("leadersArr: " , result[0].username);
     });
     
     io.on("connection", (socket) => {
@@ -28,6 +30,7 @@ module.exports = function (io) {
         socket.emit();
         userArr.push(socket.id);
         socket.broadcast.emit('playerArray', userArr);
+        socket.emit('leaderboard', leaders);
         console.log(userArr);
         console.log("new client is Connected");
 
