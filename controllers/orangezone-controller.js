@@ -18,4 +18,4 @@ module.exports = function(app) {
             res.render('characters', {character: charObj});
         });
     });
-}
+};

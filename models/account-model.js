@@ -17,6 +17,9 @@ module.exports = function(sequelize, DataTypes) {
       profilepic: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      lifetimescore: {
+        type: DataTypes.INTEGER,
       }
     });
   
