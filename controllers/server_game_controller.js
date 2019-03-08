@@ -28,9 +28,9 @@ module.exports = function (io) {
         socket.emit();
         userArr.push(socket.request.user.username);
         socket.broadcast.emit('playerArray', userArr);
-        socket.broadcast.emit('userPic', socket.request.user.image_link);
+        socket.broadcast.emit('userPic', socket.request.user.profilepic);
         console.log(userArr);
-        console.log(`User pic pathway is ${socket.request.user.image_link}`);
+        console.log(`User pic pathway is ${socket.request.user.profilepic}`);
         console.log("new client is Connected");
 
         function questionGen() {
