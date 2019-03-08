@@ -86,7 +86,7 @@ module.exports = function(app){
                         request.login(dbAccount, function(err){
                             response.redirect('/');
                         });
-                    // }
+                    // }    
                 });
             });
         }

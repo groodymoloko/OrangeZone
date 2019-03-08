@@ -8,7 +8,7 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/config/config.json')[env];
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
-const passport = require("passport")
+const passport = require("passport");
 const io = require("socket.io")(server);
 const passportSocketIo = require("passport.socketio");
 
