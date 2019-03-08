@@ -74,9 +74,3 @@ db.sequelize.sync().then(function() {
         console.log("Server is listening on localhost: " + PORT);
     });
 });
-
-
-
-
-
-
