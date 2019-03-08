@@ -10,6 +10,7 @@ const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const passport = require("passport")
 const io = require("socket.io")(server);
+const passportSocketIo = require("passport.socketio");
 
 
 console.log(config.username);
