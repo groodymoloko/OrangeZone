@@ -44,7 +44,7 @@ app.use(passport.session());
 app.use(function(req, res, next) {
     res.locals.isAuthenticated = req.isAuthenticated();
     next();
-})
+});
 
 // Set Handlebars.
 const exphbs = require("express-handlebars");

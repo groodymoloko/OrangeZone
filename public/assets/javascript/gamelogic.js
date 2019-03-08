@@ -8,8 +8,8 @@ console.log("hello gamelogic has run");
 let currentRight = 0;
 let currentWrong = 0;
 let playerArray = [];
-let player1 = userArr[0];
-let player2 = userArr[1];
+// let player1 = userArr[0];
+// let player2 = userArr[1];
 
 let socket = io();
 console.log("gamelogic.js ran");
