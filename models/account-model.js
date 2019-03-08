@@ -4,22 +4,22 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            len: [3, 10]
+            len: [1, 20]
         }
       },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
         validate:{
-            len: [5, 20]
+            len: [5, 150]
         }
       },
       profilepic: {
         type: DataTypes.STRING,
         allowNull: false,
-        // validate:{
-        //     len: [5, 20]
-        // }
+      },
+      lifetimescore: {
+        type: DataTypes.INTEGER,
       }
     });
   

@@ -1,0 +1,57 @@
+<nav class="navbar bg-dark">
+      <div>
+        <a class="navbar-brand" href="/">
+            <div id="dinologo">
+                <img src="assets/images/dinosaur.png" alt="OrangeDinosaur">
+            </div>
+            <div>
+                <h1 id="brand_title">Orange Zone</h1>
+            </div>
+            <div>
+                <h2 id="brand_title2">Gaming</h2>
+            </div>
+        </a>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Login">
+        {{#if isAuthenticated}}
+            <a href="/logout" class="btn btn-primary btn-lg" id="logout">Logout</a> 
+        {{else}}
+            <a href="/register" class="btn btn-primary btn-lg" id="create_account">Create Account</a>
+            <a href="/login" class="btn btn-primary btn-lg" id="login">Login</a> 
+        {{/if}}
+
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Games">
+        <a href="/bigbrains"><button type="button" class="btn btn-warning btn-lg" id="big_brains">Big Brains</button></a>
+        <button type="button" class="btn btn-warning btn-lg" id="shark_attack">Shark Attack!</button>
+        <button type="button" class="btn btn-warning btn-lg" id="spaceballs">Spaceballs</button>
+        <button type="button" class="btn btn-warning btn-lg" id="gold_digger">Gold Digger</button>
+        <button type="button" class="btn btn-warning btn-lg" id="elspeths_revenge">Elspeth's Revenge</button>
+      </div>
+    </nav>
+
+    <div class=container-fluid>
+      <div class="row">
+          <div class="col-lg-12 text-center" id="leaderboard">LEADERBOARD
+          </div> 
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-3">
+        </div>
+        <div class="col-lg-6 text-center" id="welcome">Welcome! Create a new account or login and then pick your game.
+            </div>
+        </div>
+        <div class="col-lg-3">
+        </div>  
+      </div>
+
+    </div>
+
+
+
+
+
+

@@ -3,6 +3,7 @@ let answerA = document.getElementById('answer_a');
 let answerB = document.getElementById('answer_b');
 let answerC = document.getElementById('answer_c');
 let answerD = document.getElementById('answer_d');
+console.log("hello gamelogic has run");
 
 let currentRight = 0;
 let currentWrong = 0;
@@ -11,7 +12,7 @@ let player1 = userArr[0];
 let player2 = userArr[1];
 
 let socket = io();
-console.log("game.js ran");
+console.log("gamelogic.js ran");
 socket.on("welcome", function(data) {
     console.log(data);
 });
@@ -24,6 +25,8 @@ socket.on('playerArray', function(data) {
 
 socket.on("questions", function(data) {
     console.log(data);
+    $(`#button_b`).css("background-color", "orange");
+    $(`.submit-answer`).prop('disabled', false);
     question.innerHTML = `<p><em>${data.question}</em></p>`;
     answerA.innerHTML = `<p><em>${data.answer}</em></p>`;
     answerB.innerHTML = `<p><em>${data.wrongOne}</em></p>`;
@@ -35,17 +38,28 @@ socket.on("questions", function(data) {
 socket.on('right', function() {
     currentRight += 1;
     console.log(currentRight);
-    $(`#player_right_count`).html(`Right: ${currentRight}`);
-    $(`#player_score`).html(currentRight);
-    $(`#opponent_score`).html(currentRight);
-
+    $(`#answer_a`).empty();
+    $(`#answer_b`).html(`Correct!`);
+    $(`#button_b`).css("background-color", "green");
+    $(`.submit-answer`).prop('disabled', true);
+    $(`#answer_c`).empty();
+    $(`#answer_d`).empty();
+    $(`#player_right_count`).html(`RIGHT: ${currentRight}`);
+    $(`#player_score`).html(`POINTS: `, currentRight);
+    $(`#opponent_score`).html(`POINTS: `, currentRight);
     // $(`#opponent_right_count`).html(`Right: ${currentRight}`);
 });
 
 socket.on('wrong', function() {
     currentWrong += 1;
     console.log(currentWrong);
-    $(`#player_wrong_count`).html(`Wrong: ${currentWrong}`);
+    $(`#answer_a`).empty();
+    $(`#answer_b`).html(`Wrong!`);
+    $(`#button_b`).css("background-color", "red");
+    $(`.submit-answer`).prop('disabled', true);
+    $(`#answer_c`).empty();
+    $(`#answer_d`).empty();
+    $(`#player_wrong_count`).html(`WRONG: ${currentWrong}`);
     // $(`#opponent_wrong_count`).html(`Wrong: ${currentWrong}`);
 });
 
