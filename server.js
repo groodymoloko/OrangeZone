@@ -47,7 +47,7 @@ app.use(session({
     store: myStore,
     saveUninitialized: false,
     proxy: true,
-    // cookie: {secure: true}
+    cookie: {secure: true}
 }))
 
 // myStore.sync();
