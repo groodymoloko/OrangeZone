@@ -7,7 +7,7 @@ module.exports = function(app) {
         console.log("index ran")
         console.log("===============" + JSON.stringify(req.user));
         console.log("===============" + req.isAuthenticated());
-        res.render('index', );
+        res.render('index');
     });
     // Get route for characters
     app.get('/register', function(req, res) {
@@ -18,4 +18,9 @@ module.exports = function(app) {
             res.render('characters', {character: charObj});
         });
     });
+<<<<<<< HEAD
+
+}
+=======
 };
+>>>>>>> 32fc10f2802c55a5134bc706cd4c3466b1e8ae3c
