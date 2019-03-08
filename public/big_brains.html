@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OrangeZone</title>
+  <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    
+    <nav class="navbar bg-dark">
+      <div>
+        <a class="navbar-brand" href="index.html">
+            <div id="dinologo">
+                <img src="assets/images/dinosaur.png" alt="OrangeDinosaur">
+            </div>
+            <div>
+                <h1 id="brand_title">Orange Zone</h1>
+            </div>
+            <div>
+                <h2 id="brand_title2">Gaming</h2>
+            </div>
+        </a>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Login">
+            <a href="/" class="btn btn-primary btn-lg" id="home">Exit Game</a>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Games">
+        <button type="button" class="btn btn-warning btn-lg" id="big_brains">Big Brains</button>
+        <button type="button" class="btn btn-warning btn-lg" id="shark_attack">Shark Attack!</button>
+        <button type="button" class="btn btn-warning btn-lg" id="spaceballs">Spaceballs</button>
+        <button type="button" class="btn btn-warning btn-lg" id="gold_digger">Gold Digger</button>
+        <button type="button" class="btn btn-warning btn-lg" id="elspeths_revenge">Elspeth's Revenge</button>
+      </div>
+    </nav>
+
+    <div class="container-fluid h-100">
+      <div class="row">
+          <div class="col-lg-12 text-center" id="leaderboard">LEADERBOARD
+          </div> 
+      </div>
+      
+      <div class="row h-100 border border-warning" id="big_brains_parent_container">
+        <div class="col-lg-3 border border-warning" id="player_pane">
+            <div class="row border border-warning" id="player_score">POINTS: 0
+            </div>
+            <div class="row border border-warning" id="player_picture">Oscar
+                <img src="assets/images/dino7.png" class="picture">
+            </div>
+            <div class="row border border-warning" id="player_total_score">LIFETIME SCORE:
+            </div>
+            <div class="row border border-warning">
+                <div class="col-lg-6 border border-warning" id="player_right_count">RIGHT: 0
+                </div>
+                <div class="col-lg-6 border border-warning" id="player_wrong_count">WRONG: 0
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 border border-warning" id="question_pane">
+            <div class="row" id="question">QUESTION
+            </div>
+
+            <div class="row justify-content-center">
+                <label class="btn-secondary row justify-content-center" id="button_a">
+                    <input class="submit-answer" name="answerBtn" type="radio" value="a">
+                    <div id="answer_a">
+                    </div>
+                </label>
+            </div>
+            <div class="row justify-content-center">
+                <label class="btn-secondary row justify-content-center" id="button_b">
+                    <input class="submit-answer" name="answerBtn" type="radio" value="b">
+                    <div id="answer_b">
+                    </div>
+                </label>
+            </div>
+            <div class="row justify-content-center">
+                <label class="btn-secondary row justify-content-center" id="button_c">
+                    <input class="submit-answer" name="answerBtn" type="radio" value="c">
+                    <div id="answer_c">
+                    </div>
+                </label>
+            </div>
+            <div class="row justify-content-center">
+                <label class="btn-secondary row justify-content-center" id="button_d">
+                    <input class="submit-answer" name="answerBtn" type="radio" value="d">
+                    <div id="answer_d">
+                    </div>
+                </label>
+            </div>
+
+        </div>
+        <div class="col-lg-3 border border-warning" id="opponent_pane">
+            <div class="row border border-warning" id="opponent_score">POINTS: 0
+            </div>
+            <div class="row border border-warning" id="opponent_picture">Big Bird
+                <img src="assets/images/dino1.png" class="picture">
+            </div>
+            <div class="row border border-warning" id="opponent_total_score">LIFETIME SCORE:
+            </div>
+            <div class="row">
+                <div class="col-lg-6 border border-warning" id="opponent_right_count">RIGHT: 0
+                </div>
+                <div class="col-lg-6 border border-warning" id="opponent_wrong_count">WRONG: 0
+                </div>
+            </div>
+        </div>  
+      </div>
+
+    </div>
+
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script 
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script 
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="assets/javascript/games.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="assets/javascript/gamelogic.js"></script>
+    
+
+</body>
+
+</html>

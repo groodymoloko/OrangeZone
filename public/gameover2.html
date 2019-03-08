@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OrangeZone</title>
+  <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    
+    <nav class="navbar bg-dark bg-transparent">
+      <div>
+        <a class="navbar-brand" href="index.html">
+            <div id="dinologo">
+                <img src="assets/images/dinosaur.png" alt="OrangeDinosaur">
+            </div>
+            <div>
+                <h1 id="brand_title">Orange Zone</h1>
+            </div>
+            <div>
+                <h2 id="brand_title2">Game Over</h2>
+            </div>
+        </a>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Login">
+        <a href="./index.html" class="btn btn-primary btn-lg" id="new_game">Start New Game</a>
+      </div>
+      
+    </nav>
+
+    <div class="container-fluid h-100" id="game_over_winner">
+      <div class="row justify-content-center h-100">
+          <div class="col-lg-12 text-center" id="lose_column">
+            <div id="you_lose">You Win!</div>
+            <div class="btn-group" role="group" aria-label="Login">
+                <a href="./index.html" class="btn btn-primary btn-lg" id="new_game">Start New Game</a>
+            </div>
+          </div> 
+      </div>
+
+    </div>
+
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script 
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script 
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="assets/javascript/games.js"></script>
+
+</body>
+
+</html>

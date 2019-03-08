@@ -1,0 +1,205 @@
+/* This CSS file styles the homepage and the gameover pages */
+
+html {
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    font-family: gso;
+    background-image: url(../images/dinosaurs.jpg);
+    transition: background 1s linear;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: black;
+    color: white;
+    font-size: 28px;
+    /* background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.7), 
+          rgba(0, 0, 0, 0.7)
+        ),
+        url(../images/dinosaurs.jpg); */
+}
+
+#big_brains_parent_container {
+    background:rgba(0,0,0,0.8) !important;
+}
+
+.btn-warning {
+    font-weight: bold;
+    background-color: orange;
+    border-color: black;
+}
+
+.btn-primary {
+    font-weight: bold;
+    background-color: grey;
+    border-color: black;
+}
+
+.btn-secondary {
+    font-weight: bold;
+    background-color: orange;
+    border-color: black;
+    color: black;
+    width: 200px;
+    margin: 20px;
+    font-size: 24px;
+}
+
+.btn-warning:hover, .btn-warning:focus, .btn-warning:active:focus, .btn-warning:active, .btn-warning.active, .open>.dropdown-toggle.btn-warning {
+    color: orange;
+    background-color: grey;
+    border-color: black;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: orange;
+    background-color: grey;
+    border-color: black;
+}
+
+.navbar {
+    font-size: 20px;
+    width: 100%;
+    right: 0;
+    left: 0;
+}
+
+#brand_title {
+    color: orange;
+}
+
+#brand_title2 {
+    color: orange;
+    margin-left: 150px;
+}
+
+#create_account {
+    margin-left: 40px;
+}
+
+#dinologo {
+    float: left;
+    padding: 0px;
+    margin-top: 0px;
+    margin-right: 10px;
+    width: 117px;
+    height: 91px;
+}
+
+.picture {
+    height: 275px;
+}
+
+#game_over_loser {
+    background-image: url(../images/losegame.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#game_over_winner {
+    background-image: url(../images/wingame.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#lose_column {
+    margin-top: 25%;
+}
+
+#you_lose {
+    font-size: 60px;
+}
+
+.navbar {
+    background:rgba(0,0,0,0.3) !important;
+}
+
+/* Wireframing */
+#leaderboard {
+    min-height: 80px;
+    font-size: 30px;
+    background:rgba(0,0,0,0.5) !important;
+    color: orange;
+    margin-bottom: 20px;
+}
+#player_score, #opponent_score {
+    min-height: 80px;
+    font-size: 40px;
+    color: greenyellow;
+}
+#player_picture, #opponent_picture {
+    min-height: 275px;
+}
+#player_total_score, #opponent_total_score {
+    min-height: 80px;
+}
+#player_right_count, #opponent_right_count {
+    min-height: 80px;
+    color: green;
+}
+#player_wrong_count, #opponent_wrong_count {
+    min-height: 80px;
+    color: red;
+}
+#question {
+    min-height: 100px;
+}
+#welcome {
+    min-height: 80px;
+    font-size: 30px;
+    background:rgba(0,0,0,0.5) !important;
+    border-radius: 10px;
+}
+#answer_a_row, #answer_b_row, #answer_c_row, #answer_d_row {
+    min-height: 60px;
+    color: orange;
+}
+
+/* Galiver Sans Obliques font file */
+@font-face {
+    font-family: "gso";
+    src: url(../fonts/SGALS.ttf);
+}
+
+/* ETHAN ADDITIONS 3/6 */
+/* HIDE RADIO */
+[type=radio] { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* IMAGE STYLES */
+  [type=radio] + div {
+    cursor: pointer;
+  }
+  
+  /* CHECKED STYLES */
+  [type=radio]:checked + div {
+    outline: 2px solid #f3c50c;
+    opacity: .70;
+  }
+
+.answer-button {
+    background-color: #31ce74;
+    text-align: center;
+    
+}
+
+#submit-answer {
+    background-color: #92442e;
+    text-align: center;
+    cursor: pointer;
+}
