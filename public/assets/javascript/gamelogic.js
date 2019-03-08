@@ -3,6 +3,7 @@ let answerA = document.getElementById('answer_a');
 let answerB = document.getElementById('answer_b');
 let answerC = document.getElementById('answer_c');
 let answerD = document.getElementById('answer_d');
+console.log("hello gamelogic has run");
 
 let currentRight = 0;
 let currentWrong = 0;

@@ -1,33 +1,46 @@
 const db = require("../models");
+const bcrypt = require("bcrypt");
 const { check, validationResult } = require('express-validator/check');
+//number of times it hashes password
+const saltRounds = 10;
+//authentication packages
+const passport = require("passport");
+const LocalStrategy = require('passport-local').Strategy;
+const path = require("path");
+
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+        db.Account.findOne({where: {username: username}})
+        .then(function(user) {
+            console.log(user.password);
+            if (!user) {
+              return done(null, false, { message: 'Incorrect username.' });
+            }
+            // if (!user.validPassword(password)) {
+            //   return done(null, false, { message: 'Incorrect password.' });
+            // }
+            else{
+                const hash = user.password;
+                bcrypt.compare(password, hash, function(err, response){
+                    if(response === true){
+                    return done(null, user);
+                    }
+                });
+            }
+        });
+    }
+));
+
 module.exports = function(app){
-    app.post('/login/auth', function(request, response) {
-        let username = request.body.username;
-        let password = request.body.password;
-        if (username && password) {
-            db.Account.findOne({
-                where: {
-                  username: username,
-                  password: password
-                },
-              }).then(function(dbAccount) {
-                // response.json(dbAccount);
-                console.log(`===== ${dbAccount} ========`)
-                if (dbAccount !== null) {
-                    request.session.loggedin = true;
-                    request.session.username = username;
-                    response.redirect('/');
-                } 
-                else if (dbAccount == null){
-                    response.send('Incorrect Username and/or Password!');
-                }			
-                response.end();
-              });
-        } 
-        else {
-            response.send('Please enter Username and Password!');
-            response.end();
-        }
+    app.post('/login', passport.authenticate(
+        "local", {
+        successRedirect: "/",
+        failureRedirect: "/login"
+    }));
+    app.get('/logout', function(req, res){
+        req.logout();
+        req.session.destroy();
+        res.redirect('/');
     });
     app.post('/register', [
         // check("username").isEmpty().withMessage("Username field cannot be empty."),
@@ -42,37 +55,68 @@ module.exports = function(app){
                 return value;
             }
         })
-        // check("passwordMatch", "Passwords do not match, please try again.").equals(password)
-        ],
-        (request, response) => {
+    ],
+    (request, response) => {
         const errors = validationResult(request);
         if(!errors.isEmpty()){
             db.character.findAll({}).then(function(result) {
                 let charObj = {
                     characters: result
                 };
-                console.log(`Errors ${JSON.stringify(errors.array())}`);
+                // console.log(`Errors ${JSON.stringify(errors.array())}`);
                 response.render('characters', {title: "Registration Error", errors: errors.array(), character: charObj});
             });
-
         }
         else{
             let username = request.body.username;
             let password = request.body.password;
             let passwordMatch = request.body.passwordMatch;
             let image = request.body.profilepic;
-            console.log("this is the image url"+ image);
-
-            db.Account.create(request.body).then(function(dbAccount) {
-                // response.json(dbAccount);
-                console.log(`===== ${dbAccount} ========`)
-                if (dbAccount !== null) {
-                    // request.session.loggedin = true;
-                    // request.session.username = username;
-                    response.redirect('/login');
-                }
-        });
+            bcrypt.hash(password, saltRounds, function(err, hash) {
+                // Store hash in your password DB.
+                db.Account.create({
+                    username: username,
+                    password: hash,
+                    profilepic: image
+                }).then(function(dbAccount) {
+                    console.log(`===== ${dbAccount.id} ========`)
+                    // if (dbAccount !== null) {
+                        // request.session.loggedin = true;
+                        // request.session.username = username;
+                        request.login(dbAccount, function(err){
+                            response.redirect('/');
+                        });
+                    // }
+                });
+            });
         }
-
+    });
+    app.get("/bigbrains", authenticationMiddleware() ,function(req, res) {
+    //   res.sendFile(path.join(__dirname, "../public/big_brains.html"));
+        let user = {
+            username: req.user.username,
+            image: req.user.profilepic
+        }
+        res.render("bigBrains", {layout: "game.handlebars", user: user});
     });
 };
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+  
+passport.deserializeUser(function(id, done) {
+    db.Account.findOne({where: {id: id}})
+    .then(function(user) {
+        done(null, user);
+    });
+});
+
+function authenticationMiddleware() {  
+	return (req, res, next) => {
+		console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
+
+	    if (req.isAuthenticated()) return next();
+	    res.redirect('/login')
+	}
+}
