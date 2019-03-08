@@ -23,7 +23,7 @@ socket.on('playerArray', function(data) {
 });
 
 socket.on('userPic', function(data) {
-    $('#player1pic').attr('src', data);
+    $('#player1pic').attr('src', `${data}`);
 });
 
 
