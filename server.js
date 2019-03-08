@@ -11,6 +11,7 @@ const MySQLStore = require('express-mysql-session')(session);
 const passport = require("passport")
 const io = require("socket.io")(server);
 const passportSocketIo = require("passport.socketio");
+const cookieParser = require("cookie-parser");
 
 
 console.log(config.username);
@@ -44,7 +45,13 @@ app.use(passport.session());
 app.use(function(req, res, next) {
     res.locals.isAuthenticated = req.isAuthenticated();
     next();
-})
+});
+io.use(passportSocketIo.authorize({
+    cookieParser: cookieParser,
+    key:          'express.sid',
+    secret:       process.env.SESSION_SECRET,
+    store:        sessionStore
+}));
 
 // Set Handlebars.
 const exphbs = require("express-handlebars");
