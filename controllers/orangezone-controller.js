@@ -7,7 +7,7 @@ module.exports = function(app) {
         console.log("index ran")
         console.log("===============" + JSON.stringify(req.user));
         console.log("===============" + req.isAuthenticated());
-        res.render('index', );
+        res.render('index');
     });
     // Get route for characters
     app.get('/register', function(req, res) {
