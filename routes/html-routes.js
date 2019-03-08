@@ -19,6 +19,14 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/big_brains.html"));
   });
 
+  app.get("/loser", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/gameover.html"));
+  });
+
+  app.get("/winner", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/gameover2.html"));
+  });
+
   // app.get("/register", function(req, res) {
   //   res.sendFile(path.join(__dirname, "../public/create_account.html"));
   // });
