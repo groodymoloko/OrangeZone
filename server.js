@@ -24,11 +24,13 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 //used to determine if user is logged in
 const options = {
-    host: config.host,
-    port: config.port,
-    user: config.username,
-    password: config.password,
-    database: config.database
+    // host: config.host,
+    // port: config.port,
+    // user: config.username,
+    // password: config.password,
+    // database: config.database
+    use_env_variable: config.use_env_variable,
+    dialect: config.dialect
 };
 const sessionStore = new MySQLStore(options);
 app.use(session({
