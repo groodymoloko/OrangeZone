@@ -6,7 +6,7 @@ const app = express();
 const server = require("http").createServer(app);
 // const env = process.env.NODE_ENV || 'development';
 // const config = require(__dirname + '/config/config.json')[env];
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
 const session = require('express-session');
 const connect = require("connect");
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -59,7 +59,7 @@ app.use(session({
 //     // cookie: {secure: true}
 // }));
 //set up passport.js
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 //sends is authenticated to all routes
@@ -68,7 +68,7 @@ app.use(function(req, res, next) {
     next();
 });
 io.use(passportSocketIo.authorize({
-    cookieParser: cookieParser,       // the same middleware you registrer in express
+    // cookieParser: cookieParser,       // the same middleware you registrer in express
     key:          'connect.sid',       // the name of the cookie where express/connect stores its session_id
     secret:       'itsasecret',    // the session_secret to parse the cookie
     store:        myStore,        // we NEED to use a sessionstore. no memorystore please
