@@ -37,6 +37,16 @@ socket.on("questions", function(data) {
     
 });
 
+socket.on('gameover', function(data) {
+    $(`#answer_a`).empty();
+    $(`#button_b`).css("background-color", "greenyellow");
+    $(`#button_b`).html(`GAME OVER!`);
+    $(`.submit-answer`).prop('disabled', true);
+    $(`#answer_c`).empty();
+    $(`#answer_d`).empty();
+    socket.emit('playerscores', playerScores);
+});
+
 socket.on('userInfo', function(data) {
     if(data.id === 1 ) {
         $('#player1name').text("Player 1: " + data.username);

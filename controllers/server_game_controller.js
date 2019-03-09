@@ -7,6 +7,7 @@ let qIndex = 0;
 let player1 = userArr[0];
 let player2 = userArr[1];
 let leaders;
+let finalScores;
 
 module.exports = function (io) {
     // Grabbing 10 questions for current quiz
@@ -41,20 +42,39 @@ module.exports = function (io) {
                 io.sockets.emit('userInfo', socket.request.user);
                 // console.log(socket.request.user);
                 io.sockets.emit("questions", questionArr[qIndex]);       
+            } else {
+                io.sockets.emit('gameover');
+                socket.on('playerScores', function(data) {
+                    console.log(`This is server-side scores ${data}`);
+                    finalScores = data;
+                });
+                if (finalScores[0] > 2 ) {
+                    io.to(`${userArr[0]}`).emit(`You win the game!`);
+                    app.get("/winner", function(req, res) {
+                        res.sendFile(path.join(__dirname, "../public/gameover2.html"));
+                      });
+                    // app.get('/gamewin', function(req, res) {
+    
+                    // })
+                    io.to(`${userArr[1]}`).emit(`You lose the game!`);
+                    app.get("/loser", function(req, res) {
+                        res.sendFile(path.join(__dirname, "../public/gameover.html"));
+                      });
+                }
+                // Redirect to losing page
+                else {
+                    io.to(`${userArr[1]}`).emit(`You win the game!`);
+                    app.get("/winner", function(req, res) {
+                        res.sendFile(path.join(__dirname, "../public/gameover2.html"));
+                      });
+                    io.to(`${userArr[0]}`).emit(`You lose the game!`);
+                    app.get("/loser", function(req, res) {
+                        res.sendFile(path.join(__dirname, "../public/gameover.html"));
+                    });
+
+
+                }
             }
-            // // Compare scores - if winner, redirect to winning page
-            // else if () {
-                
-            //     app.get('/winner', function(req, res) {
-
-            //     })
-            // }
-            // // Redirect to losing page
-            // else {
-            //     app.get('/loser', function(req, res) {
-
-            //     })
-            // }
         }
         
         questionGen();
@@ -73,6 +93,12 @@ module.exports = function (io) {
             // console.log(qIndex);
             setTimeout(questionGen, 1500);
         }
+
+        // function player1win() {
+        //     app.get('winner', function(req, res) {
+        //         res.json
+        //     })
+        // }
 
         socket.on('answer', function (data) {
             // Can we pull socket ID here to determine which user answered?
