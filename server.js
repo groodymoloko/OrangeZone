@@ -33,16 +33,8 @@ app.use(session({
     cookie: {secure: true}
 }));
 
-// myStore.sync();
-// app.use(session({
-// 	secret: 'itsasecret',
-//     resave: false,
-//     store: sessionStore,
-//     saveUninitialized: false,
-//     // cookie: {secure: true}
-// }));
 //set up passport.js
-// app.use(cookieParser());
+
 app.use(passport.initialize());
 app.use(passport.session());
 //sends is authenticated to all routes
