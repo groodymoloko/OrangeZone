@@ -20,6 +20,12 @@ socket.on('playerArray', function(data) {
     console.log(playerArray);
 });
 
+// socket.on('leaderboard', function(data) {
+//     leaders = data;
+//     console.log(leadersArray);
+//     $(`#leaderboard`).html(leaders);
+// });
+
 
 socket.on("questions", function(data) {
     console.log(data);
@@ -43,8 +49,8 @@ socket.on('right', function() {
     $(`#answer_c`).empty();
     $(`#answer_d`).empty();
     $(`#player_right_count`).html(`RIGHT: ${currentRight}`);
-    $(`#player_score`).html(`POINTS: `, currentRight);
-    $(`#opponent_score`).html(`POINTS: `, currentRight);
+    $(`#player_score`).html(`POINTS: ${currentRight}`);
+    $(`#opponent_score`).html(`POINTS: ${currentRight}`);
     // $(`#opponent_right_count`).html(`Right: ${currentRight}`);
 });
 
