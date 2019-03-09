@@ -3,35 +3,30 @@ let answerA = document.getElementById('answer_a');
 let answerB = document.getElementById('answer_b');
 let answerC = document.getElementById('answer_c');
 let answerD = document.getElementById('answer_d');
-console.log("hello gamelogic has run");
 
 let currentRight = 0;
 let currentWrong = 0;
-let playerArray = [];
-let player1 = playerArray[0];
-let player2 = playerArray[1];
+let playerArray;
+let playerScores = [0, 0];
 
 let socket = io();
-console.log("gamelogic.js ran");
 socket.on("welcome", function(data) {
-    console.log(data);
 });
 
 socket.on('playerArray', function(data) {
-    playerArray.push(data);
-    console.log(playerArray);
+    playerArray = data;
 });
     
 socket.on('leaderboard', function(data) {
-    let leaders = data;
-    for (let i = 0; i < leaders.length; i++) {
+    leaders = data;
+    $(`#leaderboard_content`).empty();
+    for (i = 0; i <  leaders.length; i++) {
         $(`#leaderboard_content`).append(" " + leaders[i].username + " " + leaders[i].lifetimescore + " . . . . . . . ");
     };
 });
 
 
 socket.on("questions", function(data) {
-    console.log(data);
     $(`#button_b`).css("background-color", "orange");
     $(`.submit-answer`).prop('disabled', false);
     question.innerHTML = `<p><em>${data.question}</em></p>`;
@@ -43,35 +38,48 @@ socket.on("questions", function(data) {
 });
 
 socket.on('userInfo', function(data) {
-    console.log(data.profilepic);
     if(data.id === 1 ) {
-        $('#player1name').text(data.username);
+        $('#player1name').text("Player 1: " + data.username);
         $('#player1pic').attr('src', data.profilepic);
         $('#player_total_score').text(`LIFETIME SCORE: ` + data.lifetimescore);
     }
     else {
-        $('#player2name').text(data.username);
+        $('#player2name').text("Player 2: " + data.username);
         $('#player2pic').attr('src', data.profilepic);
         $('#opponent_total_score').text(`LIFETIME SCORE: ` + data.lifetimescore);
-    }
+    };
 });
 
 socket.on('right', function() {
     currentRight += 1;
-    console.log(currentRight);
+    // console.log(socket);
     $(`#answer_a`).empty();
-    $(`#answer_b`).html(`Correct!`);
-    $(`#button_b`).css("background-color", "green");
+    $(`#button_b`).css("background-color", "greenyellow");
     $(`.submit-answer`).prop('disabled', true);
     $(`#answer_c`).empty();
     $(`#answer_d`).empty();
-    $(`#player_right_count`).html(`RIGHT: ${currentRight}`);
-    $(`#player_score`).html(`POINTS: ${currentRight}`);
+    console.log(playerArray);
+    // console.log(socket.id);
+    if (playerArray[0] === socket.id) {
+        $(`#answer_b`).html(`Player 1 Correct!`);
+        $(`#player_right_count`).html(`RIGHT: ${currentRight}`);
+        $(`#player_score`).html(`POINTS: ${currentRight}`);
+        playerScores[0] += 1;
+        console.log("PlayerScore0: " + playerScores[0]);
+        
+    }
+    else if (playerArray[1] === socket.id){
+        $(`#answer_b`).html(`Player 2 Correct!`);
+        $(`#opponent_right_count`).html(`RIGHT: ${currentRight}`);
+        $(`#opponent_score`).html(`POINTS: ${currentRight}`);
+        playerScores[1] += 1;
+        console.log("PlayerScore1: " + playerScores[1]);
+    };
+   
 });
 
 socket.on('wrong', function() {
     currentWrong += 1;
-    console.log(currentWrong);
     $(`#answer_a`).empty();
     $(`#answer_b`).html(`Wrong!`);
     $(`#button_b`).css("background-color", "red");
@@ -84,9 +92,8 @@ socket.on('wrong', function() {
 
 $(".submit-answer").on("click", function(event) {
     event.preventDefault();
-
+    
     let userGuess = $(`input[name='answerBtn']:checked`).val();
-    console.log(userGuess);
     
     socket.emit('answer', userGuess); // Contains  socket ID of user who clicked?
 });        
