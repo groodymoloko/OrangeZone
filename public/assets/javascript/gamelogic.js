@@ -20,11 +20,12 @@ socket.on('playerArray', function(data) {
     console.log(playerArray);
 });
 
-// socket.on('leaderboard', function(data) {
-//     leaders = data;
-//     console.log(leadersArray);
-//     $(`#leaderboard`).html(leaders);
-// });
+socket.on('leaderboard', function(data) {
+    leaders = data;
+    for (i = 0; i < 5; i++) {
+        $(`#leaderboard_content`).append(" " + leaders[i].username + " " + leaders[i].lifetimescore + " . . . . . . . ");
+    };
+});
 
 
 socket.on("questions", function(data) {
@@ -39,6 +40,20 @@ socket.on("questions", function(data) {
     
 });
 
+socket.on('userInfo', function(data) {
+    console.log(data.profilepic);
+    if(data.id%2 === 0 ) {
+        $('#player1name').text(data.username);
+        $('#player1pic').attr('src', data.profilepic);
+        $('#player_total_score').text(`LIFETIME SCORE: ` + data.lifetimescore);
+    }
+    else {
+        $('#player2name').text(data.username);
+        $('#player2pic').attr('src', data.profilepic);
+        $('#opponent_total_score').text(`LIFETIME SCORE: ` + data.lifetimescore);
+    }
+});
+
 socket.on('right', function() {
     currentRight += 1;
     console.log(currentRight);
@@ -50,8 +65,6 @@ socket.on('right', function() {
     $(`#answer_d`).empty();
     $(`#player_right_count`).html(`RIGHT: ${currentRight}`);
     $(`#player_score`).html(`POINTS: ${currentRight}`);
-    $(`#opponent_score`).html(`POINTS: ${currentRight}`);
-    // $(`#opponent_right_count`).html(`Right: ${currentRight}`);
 });
 
 socket.on('wrong', function() {
@@ -64,7 +77,6 @@ socket.on('wrong', function() {
     $(`#answer_c`).empty();
     $(`#answer_d`).empty();
     $(`#player_wrong_count`).html(`WRONG: ${currentWrong}`);
-    // $(`#opponent_wrong_count`).html(`Wrong: ${currentWrong}`);
 });
 
 
