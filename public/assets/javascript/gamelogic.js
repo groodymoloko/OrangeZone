@@ -37,6 +37,38 @@ socket.on("questions", function(data) {
     
 });
 
+// socket.on('player1win', function() {
+//     app.get('/gamewin', function(req, res) {
+    
+// })
+
+socket.on('gameover', function(data) {
+    $(`#answer_a`).empty();
+    $(`#button_b`).css("background-color", "greenyellow");
+    $(`#button_b`).html(`GAME OVER!`);
+    $(`.submit-answer`).prop('disabled', true);
+    $(`#answer_c`).empty();
+    $(`#answer_d`).empty();
+    console.log(playerScores);
+    socket.emit('playerscores', playerScores);
+});
+
+socket.on('player1win', function(data) {
+    $(`#answer_a`).html(`YOU WIN!`);
+});
+
+socket.on('player2win', function(data) {
+    $(`#answer_a`).html(`YOU WIN!`);
+});
+
+socket.on('player1lose', function(data) {
+    $(`#answer_a`).html(`YOU LOSE!`);
+});
+
+socket.on('player2lose', function(data) {
+    $(`#answer_a`).html(`YOU LOSE!`);
+});
+
 socket.on('userInfo', function(data) {
     if(data.id === 1 ) {
         $('#player1name').text("Player 1: " + data.username);

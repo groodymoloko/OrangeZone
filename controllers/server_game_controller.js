@@ -6,6 +6,7 @@ let leadersArr;
 let qIndex = 0;
 let player1 = userArr[0];
 let player2 = userArr[1];
+let finalScores;
 
 module.exports = function (io) {
     // Grabbing 10 questions for current quiz
@@ -40,21 +41,39 @@ module.exports = function (io) {
                 io.sockets.emit('userInfo', socket.request.user);
                 // console.log(socket.request.user);
                 io.sockets.emit("questions", questionArr[qIndex]);       
-            }
-            // // Compare scores - if winner, redirect to winning page
-            // else if () {
+            } else {
+                io.sockets.emit('gameover');
+                socket.on('playerscores', function(data) {
+                    console.log(data);
+                    // finalScores = data;
+
+                    if (data[0] > 2 ) {
+                        console.log("Player 1 Wins!");
+                        io.to(`${userArr[0]}`).emit(`player1win`);
+                        // app.get("/winner", function(req, res) {
+                        //     res.sendFile(path.join(__dirname, "../public/gameover2.html"));
+                        //   });
+                       
+                        io.to(`${userArr[1]}`).emit(`player2lose`);
+                        // app.get("/loser", function(req, res) {
+                        //     res.sendFile(path.join(__dirname, "../public/gameover.html"));
+                        //   });
+                    }
+                    // Redirect to losing page
+                    else {
+                        io.to(`${userArr[1]}`).emit(`player2win`);
+                        // app.get("/winner", function(req, res) {
+                        //     res.sendFile(path.join(__dirname, "../public/gameover2.html"));
+                        //   });
+                        io.to(`${userArr[0]}`).emit(`player1lose`);
+                        // app.get("/loser", function(req, res) {
+                        //     res.sendFile(path.join(__dirname, "../public/gameover.html"));
+                        // });
+                    };
+                });
                 
-            //     app.get('/gamewin', function(req, res) {
-
-            //     })
-            // }
-            // // Redirect to losing page
-            // else {
-            //     app.get('/gamelose', function(req, res) {
-
-            //     })
-            // }
-        }
+            };
+        };
         
         questionGen();
 
