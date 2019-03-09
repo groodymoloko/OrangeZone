@@ -5,7 +5,6 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 const server = require("http").createServer(app);
 const session = require('express-session');
-const connect = require("connect");
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const passport = require("passport")
 const io = require("socket.io")(server);
@@ -30,7 +29,7 @@ app.use(session({
     store: myStore,
     saveUninitialized: false,
     proxy: true,
-    cookie: {secure: true}
+    // cookie: {secure: true}
 }));
 
 // myStore.sync();
