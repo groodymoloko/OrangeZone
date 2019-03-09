@@ -2,7 +2,7 @@ const db = require("../models");
 
 let questionArr;
 let userArr = [];
-let leadersArr = [];
+let leadersArr;
 let qIndex = 0;
 let player1 = userArr[0];
 let player2 = userArr[1];
@@ -20,22 +20,26 @@ module.exports = function (io) {
     db.Account.findAll({
         order: ['lifetimescore'],
     }).then(function (result) {
-        leaders = result;
+        leadersArr = result;
         // console.log(result);
     });
     
     io.on("connection", (socket) => {
         socket.emit("welcome", "hello and welcome to the socket.io Server");
-        userArr.push(socket.request.user.username);
-        socket.broadcast.emit('playerArray', userArr);
-        socket.emit('leaderboard', leaders);
+        // userArr.push(socket.request.user.username);
+        userArr.push(socket.id);
+        console.log(userArr);
+        io.sockets.emit('playerArray', userArr);
+        socket.emit('leaderboard', leadersArr);
+        io.sockets.emit('userInfo', socket.request.user);
         // console.log(userArr);
         // console.log("new client is Connected");
 
         function questionGen() {
             if(qIndex < 5 ) {
-                socket.emit('userInfo', socket.request.user);
-                socket.emit("questions", questionArr[qIndex]);       
+                io.sockets.emit('userInfo', socket.request.user);
+                // console.log(socket.request.user);
+                io.sockets.emit("questions", questionArr[qIndex]);       
             }
             // // Compare scores - if winner, redirect to winning page
             // else if () {
@@ -72,7 +76,7 @@ module.exports = function (io) {
         socket.on('answer', function (data) {
             if (data === 'a') {
                 //answer is correct
-                io.sockets.emit('right');
+                socket.emit('right');
                 newRight();
             }
             else {
