@@ -27,8 +27,8 @@ module.exports = function (io) {
     io.on("connection", (socket) => {
         socket.emit("welcome", "hello and welcome to the socket.io Server");
         console.log('user ' + socket.request.user.username + ' connected');
-        socket.emit();
-        userArr.push(socket.id);
+        // socket.emit();
+        userArr.push(socket.request.user.username);
         socket.broadcast.emit('playerArray', userArr);
         socket.emit('leaderboard', leaders);
         console.log(userArr);
