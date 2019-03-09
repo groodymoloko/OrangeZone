@@ -29,8 +29,9 @@ app.use(session({
     resave: false,
     store: myStore,
     saveUninitialized: false,
-    proxy: true,
-    cookie: {secure: true}
+    proxy: true
+    // Comment out below line for running locally, uncomment for push to Heroku (and add comma above)
+    // cookie: {secure: true}
 }));
 
 //set up passport.js
