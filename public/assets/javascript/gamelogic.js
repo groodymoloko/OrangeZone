@@ -10,6 +10,7 @@ let currentWrong = 0;
 let playerArray = [];
 let player1 = playerArray[0];
 let player2 = playerArray[1];
+let leaders;
 
 let socket = io();
 console.log("gamelogic.js ran");
@@ -21,18 +22,14 @@ socket.on('playerArray', function(data) {
     playerArray.push(data);
     console.log(playerArray);
 });
-
-socket.on('userInfo', function(data) {
-    if(data.id === 1) {
-        $('#player1name').text(data.username);
-        $('#player1pic').attr('src', data.profilepic);
-    }
-    else if(data.id === 2) {
-        $('#player2name').text(data.username);
-        $('#player2pic').attr('src', data.profilepic);
-    }
-});
     
+socket.on('leaderboard', function(data) {
+    leaders = data;
+    for (let i = 0; i < 5; i++) {
+        $(`#leaderboard_content`).append(" " + leaders[i].username + " " + leaders[i].lifetimescore + " . . . . . . . ");
+    };
+});
+
 
 socket.on("questions", function(data) {
     console.log(data);
@@ -46,6 +43,20 @@ socket.on("questions", function(data) {
     
 });
 
+socket.on('userInfo', function(data) {
+    console.log(data.profilepic);
+    if(data.id%2 === 0 ) {
+        $('#player1name').text(data.username);
+        $('#player1pic').attr('src', data.profilepic);
+        $('#player_total_score').text(`LIFETIME SCORE: ` + data.lifetimescore);
+    }
+    else {
+        $('#player2name').text(data.username);
+        $('#player2pic').attr('src', data.profilepic);
+        $('#opponent_total_score').text(`LIFETIME SCORE: ` + data.lifetimescore);
+    }
+});
+
 socket.on('right', function() {
     currentRight += 1;
     console.log(currentRight);
@@ -56,9 +67,7 @@ socket.on('right', function() {
     $(`#answer_c`).empty();
     $(`#answer_d`).empty();
     $(`#player_right_count`).html(`RIGHT: ${currentRight}`);
-    $(`#player_score`).html(`POINTS: `, currentRight);
-    $(`#opponent_score`).html(`POINTS: `, currentRight);
-    // $(`#opponent_right_count`).html(`Right: ${currentRight}`);
+    $(`#player_score`).html(`POINTS: ${currentRight}`);
 });
 
 socket.on('wrong', function() {
@@ -71,7 +80,6 @@ socket.on('wrong', function() {
     $(`#answer_c`).empty();
     $(`#answer_d`).empty();
     $(`#player_wrong_count`).html(`WRONG: ${currentWrong}`);
-    // $(`#opponent_wrong_count`).html(`Wrong: ${currentWrong}`);
 });
 
 

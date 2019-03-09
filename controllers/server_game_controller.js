@@ -2,9 +2,11 @@ const db = require("../models");
 
 let questionArr;
 let userArr = [];
+let leadersArr = [];
 let qIndex = 0;
 let player1 = userArr[0];
 let player2 = userArr[1];
+let leaders;
 
 module.exports = function (io) {
     // Grabbing 10 questions for current quiz
@@ -17,20 +19,20 @@ module.exports = function (io) {
     });
 
     db.Account.findAll({
-        group: ['lifetimescore'],
+        order: ['lifetimescore'],
     }).then(function (result) {
-        console.log("I have the lifetime max score:", result);
+        leaders = result;
+        // console.log(result);
     });
     
     io.on("connection", (socket) => {
         socket.emit("welcome", "hello and welcome to the socket.io Server");
-        console.log('user ' + socket.request.user.username + ' connected');
-        socket.emit();
         userArr.push(socket.request.user.username);
         socket.broadcast.emit('playerArray', userArr);
-        console.log(userArr);
-        console.log("new client is Connected");
-        
+        socket.emit('leaderboard', leaders);
+        // console.log(userArr);
+        // console.log("new client is Connected");
+
         function questionGen() {
             if(qIndex < 5 ) {
                 socket.emit('userInfo', socket.request.user);
@@ -57,14 +59,14 @@ module.exports = function (io) {
         // Handle right answer new question
         function newRight() {
             qIndex++;
-            console.log(qIndex);
+            // console.log(qIndex);
             setTimeout(questionGen, 1500);
         }
     
          // Handle wrong answer new question
          function newWrong() {
             qIndex++;
-            console.log(qIndex);
+            // console.log(qIndex);
             setTimeout(questionGen, 1500);
         }
 

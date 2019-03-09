@@ -1,11 +1,13 @@
 {
   "name": "OrangeZone",
   "version": "1.0.0",
-  "description": "",
+  "description": "* Jose Chaparro  * Van Patterson * Matt Keil * Jorge Gomez * Ethan Tatum",
   "main": "index.js",
   "dependencies": {
     "bcrypt": "^3.0.4",
     "bluebird": "^3.5.3",
+    "connect": "^3.6.6",
+    "connect-session-sequelize": "^6.0.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
@@ -22,7 +24,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
