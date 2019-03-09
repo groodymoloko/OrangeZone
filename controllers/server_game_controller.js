@@ -30,6 +30,7 @@ module.exports = function (io) {
         userArr.push(socket.request.user.username);
         socket.broadcast.emit('playerArray', userArr);
         socket.emit('leaderboard', leaders);
+        io.sockets.emit('userInfo', socket.request.user);
         // console.log(userArr);
         // console.log("new client is Connected");
 

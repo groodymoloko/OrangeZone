@@ -10,7 +10,6 @@ let currentWrong = 0;
 let playerArray = [];
 let player1 = playerArray[0];
 let player2 = playerArray[1];
-let leaders;
 
 let socket = io();
 console.log("gamelogic.js ran");
@@ -24,8 +23,8 @@ socket.on('playerArray', function(data) {
 });
     
 socket.on('leaderboard', function(data) {
-    leaders = data;
-    for (let i = 0; i < 5; i++) {
+    let leaders = data;
+    for (let i = 0; i < leaders.length; i++) {
         $(`#leaderboard_content`).append(" " + leaders[i].username + " " + leaders[i].lifetimescore + " . . . . . . . ");
     };
 });
@@ -45,7 +44,7 @@ socket.on("questions", function(data) {
 
 socket.on('userInfo', function(data) {
     console.log(data.profilepic);
-    if(data.id%2 === 0 ) {
+    if(data.id === 1 ) {
         $('#player1name').text(data.username);
         $('#player1pic').attr('src', data.profilepic);
         $('#player_total_score').text(`LIFETIME SCORE: ` + data.lifetimescore);
