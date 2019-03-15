@@ -5,16 +5,6 @@ const path = require("path");
 // =============================================================
 module.exports = function(app) {
 
-  // Each of the below routes just handles the HTML page that the user gets sent to.
-
-  // index route loads index.html
-  // app.get("/", function(req, res) {
-  //   console.log("hello");
-  //   console.log("===============" + req.user);
-  //   console.log("===============" + req.isAuthenticated());
-  //   res.render('index');
-  // });
-
   app.get("/login", function(req, res) {
     console.log("=== hello Login");
     res.sendFile(path.join(__dirname, "../public/login.html"));
@@ -25,7 +15,6 @@ module.exports = function(app) {
   });
 
   app.get("/winner", function(req, res) {
-  res.sendFile(path.join(__dirname, "../public/gameover2.html"));
+    res.sendFile(path.join(__dirname, "../public/gameover2.html"));
   });
-  
 };
