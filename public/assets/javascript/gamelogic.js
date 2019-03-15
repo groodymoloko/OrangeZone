@@ -121,6 +121,10 @@ socket.on('wrong', function() {
     $(`#player_wrong_count`).html(`WRONG: ${currentWrong}`);
 });
 
+$("#exit_game").on("click", function(event) {
+    event.preventDefault();
+    socket.emit('disconnect');
+});
 
 $(".submit-answer").on("click", function(event) {
     event.preventDefault();

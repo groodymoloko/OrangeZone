@@ -108,7 +108,9 @@ module.exports = function (io) {
         socket.on('disconnect', function () {
             io.emit('user disconnected');
             userArr = [];
-            console.log("user disconnected");
+            console.log("Socket ID yo: " + socket.id);
+            socket.disconnect();
+            
         });
 
     });
