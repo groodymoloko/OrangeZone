@@ -126,9 +126,17 @@ body {
 }
 
 /* Wireframing */
-#leaderboard {
-    min-height: 80px;
+#leaderboard_title {
+    min-height: 40px;
     font-size: 30px;
+    background:rgba(0,0,0,0.5) !important;
+    color: white;
+    letter-spacing: 2px;
+}
+
+#leaderboard_content {
+    min-height: 40px;
+    font-size: 24px;
     background:rgba(0,0,0,0.5) !important;
     color: orange;
     margin-bottom: 20px;
@@ -137,12 +145,18 @@ body {
     min-height: 80px;
     font-size: 40px;
     color: greenyellow;
+    padding-left: 10px;
 }
-#player_picture, #opponent_picture {
+#player1pic, #player2pic {
     min-height: 275px;
+}
+
+#player1name, #player2name {
+    padding-left: 10px;
 }
 #player_total_score, #opponent_total_score {
     min-height: 80px;
+    padding-left: 10px;
 }
 #player_right_count, #opponent_right_count {
     min-height: 80px;
@@ -154,16 +168,22 @@ body {
 }
 #question {
     min-height: 100px;
+    padding: 20px;
 }
 #welcome {
     min-height: 80px;
     font-size: 30px;
     background:rgba(0,0,0,0.5) !important;
     border-radius: 10px;
+    margin-top: 30px;
 }
 #answer_a_row, #answer_b_row, #answer_c_row, #answer_d_row {
     min-height: 60px;
     color: orange;
+}
+
+#button_b {
+    padding-left: 5px;
 }
 
 /* Galiver Sans Obliques font file */

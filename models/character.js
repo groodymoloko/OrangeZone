@@ -11,30 +11,6 @@ module.exports = function(sequelize, DataTypes) {
         character_description: {
             type: DataTypes.TEXT,
             allowNull: false
-        },
-        speed: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                min: 0,
-                max: 10
-            }
-        },
-        intelligence: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                min: 0,
-                max: 10
-            }
-        },
-        luck: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                min: 0,
-                max: 10
-            }
         }
     });
     return character;
